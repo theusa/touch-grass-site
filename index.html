@@ -1,165 +1,1493 @@
-import React, { useState } from 'react';
-import { CheckCircle2, ArrowRight, Send, Star } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Touch Grass Fitness | Joyful Movement for Mind & Body</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Touch Grass Fitness makes movement fun again with lifting, running, and playful outdoor modalities to support both physical and mental health."
+  />
+  <style>
+    :root {
+      --bg: #f5fdf2;
+      --bg-alt: #ffffff;
+      --accent: #3e9152;
+      --accent-soft: #b4e3c3;
+      --accent-strong: #23623a;
+      --text-main: #1f2924;
+      --text-muted: #5b7063;
+      --highlight: #ffd767;
+      --danger: #ff6b6b;
+      --radius-xl: 24px;
+      --radius-xxl: 32px;
+      --shadow-soft: 0 18px 40px rgba(16, 53, 27, 0.14);
+    }
 
-export const ActivityGenerator: React.FC = () => {
-  const [view, setView] = useState<'form' | 'success'>('form');
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({ 
-    name: '', 
-    email: '', 
-    phone: '',
-    goal: 'Touch Grass' 
-  });
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #d7fbe8 0, #f5fdf2 40%, #fefaf2 100%);
+      color: var(--text-main);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    // SIMULATE SERVER REQUEST
-    // To make this live:
-    // 1. Create a free account on formspree.io
-    // 2. Create a new form
-    // 3. Replace this setTimeout with:
-    //    await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-    //      method: "POST",
-    //      body: JSON.stringify(formData),
-    //      headers: { 'Content-Type': 'application/json' }
-    //    });
-    
-    setTimeout(() => {
-      setLoading(false);
-      setView('success');
-      console.log("Form Submitted:", formData);
-    }, 1500);
-  };
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  return (
-    <section id="activity-generator" className="py-24 bg-cream relative overflow-hidden">
-       
-       {/* Decorative Elements */}
-       <div className="absolute top-20 left-10 animate-spin-slow opacity-20 hidden md:block">
-          <Star className="w-24 h-24 text-pop-yellow fill-current" />
-       </div>
-       <div className="absolute bottom-20 right-10 animate-bounce-crazy opacity-20 hidden md:block">
-          <div className="w-16 h-16 rounded-full bg-pop-red"></div>
-       </div>
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-       <div className="max-w-4xl mx-auto px-6 relative z-10">
-          
-          <div className="text-center mb-12">
-             <div className="inline-block bg-pop-green px-4 py-1 rounded-full border-2 border-ink font-bold text-xs uppercase mb-4 shadow-hard">
-                Accepting New Humans
-             </div>
-             <h2 className="font-display text-5xl md:text-7xl text-ink">
-                JOIN THE <span className="text-pop-blue">HERD</span>
-             </h2>
-             <p className="font-bold text-xl mt-6 max-w-2xl mx-auto opacity-70">
-                Ready to ditch the fluorescent lights and reclaim your wild self? 
-                Drop your info below. We'll reach out to schedule your first session.
-             </p>
+    .page {
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 20px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* fun floating blobs */
+    .blob {
+      position: fixed;
+      z-index: -1;
+      filter: blur(40px);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      width: 260px;
+      height: 260px;
+      background: #ffe6a1;
+      top: -60px;
+      left: -40px;
+    }
+    .blob-2 {
+      width: 260px;
+      height: 260px;
+      background: #b2f4ce;
+      bottom: 0;
+      right: -40px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 8px 12px 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: conic-gradient(
+        from 180deg,
+        #fef6d6,
+        #fce1ad,
+        #f9f0ff,
+        #c6f5d6,
+        #fef6d6
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      font-size: 24px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #1e422a;
+      color: #f6fff9;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(8, 35, 17, 0.4);
+      border: 1px solid rgba(244, 255, 248, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-cta span {
+      font-size: 16px;
+    }
+
+    main {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(246, 255, 247, 0.94);
+      border: 1px solid rgba(141, 206, 155, 0.6);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .pill-badge {
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #f6fff9;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 span.highlight {
+      background: var(--highlight);
+      box-shadow: 0 10px 0 rgba(255, 215, 103, 0.5);
+      border-radius: 12px;
+      padding: 0 6px;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .hero-bullet {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px dashed rgba(62, 145, 82, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #23623a, #51aa70);
+      color: #f1fff7;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 14px 32px rgba(16, 76, 33, 0.4);
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(16, 76, 33, 0.5);
+    }
+
+    .btn-ghost {
+      padding: 9px 15px;
+      border-radius: 999px;
+      border: 1px dashed rgba(42, 92, 53, 0.4);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .btn-ghost span.emoji {
+      font-size: 16px;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .hero-note strong {
+      color: var(--accent-strong);
+    }
+
+    .hero-art {
+      position: relative;
+      padding: 14px;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xxl);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+
+    .hero-herd-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(248, 255, 247, 0.9);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .hero-herd-label span.emoji {
+      font-size: 15px;
+    }
+
+    .hero-session-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #1f4229;
+      color: #f6fff9;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .hero-card-body {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero-session-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hero-session-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(180, 227, 195, 0.35);
+    }
+
+    .hero-meter {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: #edf5ef;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-meter-fill {
+      position: absolute;
+      inset: 0;
+      width: 78%;
+      background: linear-gradient(90deg, #ffd767, #51aa70);
+      border-radius: 999px;
+    }
+
+    .hero-characters {
+      position: relative;
+      height: 140px;
+    }
+
+    .animal-bubble {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .animal-face {
+      width: 64px;
+      height: 64px;
+      border-radius: 24px;
+      background: #fef6e4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 10px 20px rgba(154, 109, 49, 0.4);
+    }
+
+    .animal-face.goat {
+      background: #f9f2ff;
+      box-shadow: 0 10px 22px rgba(78, 40, 120, 0.35);
+    }
+
+    .animal-face.cap {
+      background: #ecfbff;
+      box-shadow: 0 10px 22px rgba(33, 92, 112, 0.3);
+    }
+
+    .animal-label {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px dashed rgba(0, 0, 0, 0.06);
+    }
+
+    .animal-bubble--cow {
+      left: 0;
+      bottom: 6px;
+    }
+
+    .animal-bubble--goat {
+      right: 4px;
+      top: -4px;
+    }
+
+    .animal-bubble--cap {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 20px;
+    }
+
+    @keyframes bob {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    .animal-face {
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    .animal-face.goat {
+      animation-delay: 0.4s;
+    }
+
+    .animal-face.cap {
+      animation-delay: 0.8s;
+    }
+
+    .hero-stamp {
+      position: absolute;
+      right: -14px;
+      bottom: -18px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px dashed rgba(27, 82, 43, 0.35);
+      background: radial-gradient(circle, #fef6d8 0, #fee6a5 45%, #fef6d8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #303721;
+      transform: rotate(-10deg);
+    }
+
+    .hero-stamp span.emoji {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
+    section {
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.96);
+      padding: 24px 20px 22px;
+      box-shadow: 0 10px 28px rgba(12, 54, 25, 0.1);
+    }
+
+    section + section {
+      margin-top: 4px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+    }
+
+    .section-header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 360px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(244, 253, 246, 0.9);
+      border: 1px dashed rgba(62, 145, 82, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: 20px;
+      background: var(--bg-alt);
+      padding: 14px 12px 12px;
+      border: 1px solid rgba(15, 59, 32, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-pill {
+      border-radius: 999px;
+      padding: 3px 7px;
+      background: rgba(180, 227, 195, 0.22);
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-emoji {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 780px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .list-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .list-item span.bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(180, 227, 195, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .list-item strong {
+      color: var(--text-main);
+      display: block;
+    }
+
+    .coach-card {
+      border-radius: 20px;
+      padding: 14px 12px 12px;
+      background: #f5fdf2;
+      border: 1px dashed rgba(42, 92, 53, 0.4);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+    }
+
+    .coach-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fef6d8, #b4e3c3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 10px 20px rgba(42, 92, 53, 0.25);
+    }
+
+    .coach-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .coach-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .coach-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .coach-tag {
+      border-radius: 999px;
+      border: 1px solid rgba(42, 92, 53, 0.36);
+      font-size: 11px;
+      padding: 3px 7px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 820px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    input,
+    textarea,
+    select {
+      border-radius: 12px;
+      border: 1px solid rgba(42, 92, 53, 0.28);
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 13px;
+      background: rgba(252, 255, 253, 0.98);
+      outline: none;
+      transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out,
+        background 0.12s ease-out;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(62, 145, 82, 0.4);
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .inline-fields {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .inline-fields {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .helper {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .contact-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .contact-note a {
+      color: var(--accent-strong);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .contact-aside {
+      border-radius: 20px;
+      padding: 14px 12px;
+      background: #f5fdf8;
+      border: 1px dashed rgba(42, 92, 53, 0.4);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-aside-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    footer {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          🐄🌱
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">Touch Grass Fitness</div>
+          <div class="brand-tagline">Joyful strength for human animals.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#why">Why Touch Grass</a>
+        <a href="#movement">Movement Menu</a>
+        <a href="#mind">Mind & Mood</a>
+        <a href="#coach">Coach</a>
+        <a href="#contact" class="nav-cta">
+          Start here
+          <span>➡️</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div>
+          <div class="pill">
+            <span class="pill-badge">New</span>
+            <span>Personal training for people who miss recess.</span>
+          </div>
+          <h1>
+            Lift, run & play<br />
+            like a <span class="highlight">happy herd</span> again.
+          </h1>
+          <p class="hero-subtitle">
+            Touch Grass Fitness blends classic training (strength, conditioning,
+            running) with playful, outdoor modalities so workouts feel less like
+            punishment and more like recess for your nervous system.
+          </p>
+
+          <div class="hero-bullets">
+            <div class="hero-bullet">
+              🐕‍🦺 Trails, parks, hills, playgrounds
+            </div>
+            <div class="hero-bullet">
+              🐄 Animal-themed drills & games
+            </div>
+            <div class="hero-bullet">
+              🧠 Sessions that support anxiety & mood
+            </div>
           </div>
 
-          <div className="bg-white border-4 border-ink rounded-3xl p-8 md:p-12 shadow-hard-xl transition-all duration-300">
-            
-             {/* VIEW: FORM */}
-             {view === 'form' && (
-                <form onSubmit={handleFormSubmit} className="space-y-6 text-left animate-in fade-in slide-in-from-bottom-4 duration-500">
-                   
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                         <label className="block font-bold mb-2 uppercase text-sm tracking-wider">Name</label>
-                         <input 
-                           required
-                           type="text" 
-                           placeholder="Jane Doe"
-                           className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all"
-                           value={formData.name}
-                           onChange={e => setFormData({...formData, name: e.target.value})}
-                         />
-                      </div>
-                      
-                      <div>
-                         <label className="block font-bold mb-2 uppercase text-sm tracking-wider">Phone (Optional)</label>
-                         <input 
-                           type="tel" 
-                           placeholder="(555) 123-4567"
-                           className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all"
-                           value={formData.phone}
-                           onChange={e => setFormData({...formData, phone: e.target.value})}
-                         />
-                      </div>
-                   </div>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Book a free “Touch Grass” consult
+              <span>🌱</span>
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('movement').scrollIntoView({behavior:'smooth'})">
+              <span class="emoji">👣</span>
+              See how we move
+            </button>
+          </div>
+          <p class="hero-note">
+            <strong>Zero bootcamp barking.</strong> Just thoughtful coaching, steady progress,
+            and movement that you actually look forward to.
+          </p>
+        </div>
 
-                   <div>
-                      <label className="block font-bold mb-2 uppercase text-sm tracking-wider">Email Address</label>
-                      <input 
-                        required
-                        type="email" 
-                        placeholder="jane@example.com"
-                        className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all"
-                        value={formData.email}
-                        onChange={e => setFormData({...formData, email: e.target.value})}
-                      />
-                   </div>
-
-                   <div>
-                      <label className="block font-bold mb-2 uppercase text-sm tracking-wider">What's the Goal?</label>
-                      <select 
-                        className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all appearance-none cursor-pointer"
-                        value={formData.goal}
-                        onChange={e => setFormData({...formData, goal: e.target.value})}
-                      >
-                         <option value="Touch Grass">Just want to Touch Grass</option>
-                         <option value="Get Strong">Get Strong & Carry Logs</option>
-                         <option value="Mental Health">Mental Reset / Stress Relief</option>
-                         <option value="Adventure">Train for an Adventure</option>
-                         <option value="Chaos">Pure Chaos (Surprise Me)</option>
-                      </select>
-                   </div>
-
-                   <div className="pt-4">
-                      <button 
-                        type="submit" 
-                        disabled={loading}
-                        className="w-full bg-pop-red text-cream font-display text-2xl py-5 rounded-xl border-4 border-ink shadow-hard hover:translate-y-1 hover:shadow-none hover:bg-pop-blue transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
-                      >
-                         {loading ? (
-                           <>Sending...</>
-                         ) : (
-                           <>LET'S GO 🚀</>
-                         )}
-                      </button>
-                      <p className="text-center mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                         No Spam. Only Good Vibes.
-                      </p>
-                   </div>
-                </form>
-             )}
-
-             {/* VIEW: SUCCESS */}
-             {view === 'success' && (
-                <div className="text-center py-12 animate-in zoom-in-90 duration-500">
-                   <div className="inline-flex items-center justify-center w-24 h-24 bg-pop-green text-cream rounded-full border-4 border-ink mb-6 animate-bounce">
-                      <CheckCircle2 className="w-12 h-12" />
-                   </div>
-                   <h3 className="font-display text-4xl mb-4">You're In!</h3>
-                   <p className="font-bold text-xl text-gray-600 mb-8 max-w-md mx-auto">
-                      We've received your signal. A real human (probably eating a protein bar) will text or email you shortly.
-                   </p>
-                   <button 
-                     onClick={() => {
-                        setView('form');
-                        setFormData({ name: '', email: '', phone: '', goal: 'Touch Grass' });
-                     }}
-                     className="bg-cream text-ink font-bold px-8 py-3 rounded-full border-4 border-ink hover:bg-pop-yellow transition-all"
-                   >
-                      Send Another One
-                   </button>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-herd-label">
+                <span class="emoji">🌾</span>
+                The Morning Herd
+              </div>
+              <div class="hero-session-pill">Today · 7:30 AM · Park</div>
+            </div>
+            <div class="hero-card-body">
+              <div>
+                <div class="hero-session-title">“Touch Grass & Chill”</div>
+                <div class="hero-session-meta">
+                  Warm strength + short run + silly animal drills + breathwork
                 </div>
-             )}
-
+                <div class="hero-tags">
+                  <div class="hero-tag">Beginner-friendly</div>
+                  <div class="hero-tag">Anxiety-aware</div>
+                  <div class="hero-tag">Shoes optional</div>
+                </div>
+                <div class="hero-meter">
+                  <div class="hero-meter-fill"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--text-muted);">
+                  <span>Joy level</span>
+                  <span>“I forgot this was a workout.”</span>
+                </div>
+              </div>
+              <div class="hero-characters">
+                <div class="animal-bubble animal-bubble--cow">
+                  <div class="animal-face">🐄</div>
+                  <div class="animal-label">Heavy squats</div>
+                </div>
+                <div class="animal-bubble animal-bubble--goat">
+                  <div class="animal-face goat">🐐</div>
+                  <div class="animal-label">Hill sprints</div>
+                </div>
+                <div class="animal-bubble animal-bubble--cap">
+                  <div class="animal-face cap">🦫</div>
+                  <div class="animal-label">Playful carries</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-stamp">
+              <div>
+                <span class="emoji">🧠</span>
+                <span>Move body</span><br />
+                <span>Calm mind</span>
+              </div>
+            </div>
           </div>
-       </div>
-    </section>
-  );
-};
+        </div>
+      </section>
+
+      <!-- WHY TOUCH GRASS -->
+      <section id="why">
+        <div class="section-header">
+          <div>
+            <h2>Why Touch Grass Fitness?</h2>
+            <p>
+              The world is loud, screens are constant, and most workouts feel
+              like more grind. Touch Grass is your reminder that you’re a
+              <strong>human animal</strong> that needs play, sunlight, and
+              strength.
+            </p>
+          </div>
+          <div class="chips">
+            <div class="chip">🌱 Outdoor first</div>
+            <div class="chip">💪 Strength & conditioning</div>
+            <div class="chip">🧠 Mental health aware</div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-label">01 · Joyful movement</div>
+            <div class="card-title">Not just “go harder.”</div>
+            <div class="card-text">
+              We use lifting, runs, games, and quirky challenges so training
+              feels like the best part of your day, not another to-do.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">Recess energy</span>
+              <span>Tag, relays, tiny dares</span>
+            </div>
+            <div class="card-emoji">🦊</div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">02 · Mental health focus</div>
+            <div class="card-title">Train your nervous system too.</div>
+            <div class="card-text">
+              Sessions are built to support stress, anxiety and mood:
+              structured warm-ups, intentional cooldowns, and space to breathe.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">Move · breathe · regulate</span>
+              <span>Evidence-informed</span>
+            </div>
+            <div class="card-emoji">🧠</div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">03 · Human-sized coaching</div>
+            <div class="card-title">No drill sergeant vibes.</div>
+            <div class="card-text">
+              You get thoughtful coaching, clear cues, and progression that fits
+              your body, history, and life season.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">Progress > punishment</span>
+              <span>All levels welcome</span>
+            </div>
+            <div class="card-emoji">🦬</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOVEMENT MENU -->
+      <section id="movement">
+        <div class="section-header">
+          <div>
+            <h2>The Movement Menu</h2>
+            <p>
+              We mix classic tools with “wait, this counts as exercise?” so you
+              build a strong body <em>and</em> a better relationship with
+              movement.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-label">Strength</div>
+            <div class="card-title">Barbells, bells & bodyweight</div>
+            <div class="card-text">
+              Squats, hinges, presses, carries &amp; pulls with clean form,
+              smart loading, and joint-friendly progressions.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">🐂 “Strong cow” days</span>
+              <span>2–4× / week</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Conditioning</div>
+            <div class="card-title">Run, hike, ruck, chase.</div>
+            <div class="card-text">
+              Intervals, hill sprints, tempo runs, and “oops I just sprinted for
+              fun” games in parks and trails.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">🐕 Trail zoomies</span>
+              <span>Breath-based pacing</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Play & Skill</div>
+            <div class="card-title">Adult recess, no judgment.</div>
+            <div class="card-text">
+              Animal flow, med ball toss, playground strength, footwork drills,
+              frisbee, and weird challenges that make you laugh.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">🦝 “Trash panda” chaos</span>
+              <span>Optional spice</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Nervous system</div>
+            <div class="card-title">Down-shifting on purpose.</div>
+            <div class="card-text">
+              Cooldowns, simple breathwork, and grounding practices so you
+              don’t leave more revved up than you came.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">🌬️ 2–5 minutes</span>
+              <span>Sleep-friendly</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Environment</div>
+            <div class="card-title">Grass, dirt, sky.</div>
+            <div class="card-text">
+              Whenever possible we train outside—parks, tracks, fields—so your
+              brain gets the memo that life is bigger than your inbox.
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">🌳 Park sessions</span>
+              <span>Indoor option if needed</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">You-shaped plan</div>
+            <div class="card-title">Built around your brain & body.</div>
+            <div class="card-text">
+              Training blocks designed around your goals, recovery, preferences,
+              and mental load, not just “3×10 because the template said so.”
+            </div>
+            <div class="card-foot">
+              <span class="card-pill">📝 Personalized plan</span>
+              <span>Check-ins included</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MIND & MOOD -->
+      <section id="mind">
+        <div class="two-column">
+          <div>
+            <div class="section-header" style="margin-bottom:10px;">
+              <div>
+                <h2>Movement as mental health hygiene.</h2>
+                <p>
+                  We’re not your therapist, but we <em>are</em> serious about
+                  how training can support mood, anxiety, and stress over the
+                  long haul.
+                </p>
+              </div>
+            </div>
+            <div class="list">
+              <div class="list-item">
+                <span class="bullet">🧭</span>
+                <div>
+                  <strong>Predictable rhythms.</strong>
+                  Training blocks follow clear patterns so your brain knows what
+                  to expect—less decision fatigue, more doing.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🔊</span>
+                <div>
+                  <strong>Intensity with a volume knob.</strong>
+                  We scale up or down based on your sleep, stress, and cycle
+                  instead of forcing “beast mode” on a fried nervous system.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🫁</span>
+                <div>
+                  <strong>Bookended breathwork.</strong>
+                  Short, accessible breathing & grounding at the end of
+                  sessions helps you leave calmer than you arrived.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🤝</span>
+                <div>
+                  <strong>No shame, no body snark.</strong>
+                  No weigh-ins as punishment, no “summer body” talk. We care
+                  about strength, capacity, and how your life feels.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-header" style="margin-bottom:10px;">
+              <div>
+                <h2>The Animal Pact</h2>
+                <p>
+                  A small code we train by, to keep Touch Grass grounded and
+                  kind.
+                </p>
+              </div>
+            </div>
+            <div class="list">
+              <div class="list-item">
+                <span class="bullet">🐄</span>
+                <div>
+                  <strong>Cows are allowed to be bored.</strong>
+                  You can show up tired, anxious, or low. We’ll meet you where
+                  you’re at and adjust.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🐕</span>
+                <div>
+                  <strong>Dogs get zoomies.</strong>
+                  There’s room for sprints, laughter, and taking up space.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🦔</span>
+                <div>
+                  <strong>Porcupines need boundaries.</strong>
+                  Consent and comfort come first with touch, spotting, and
+                  social vibes.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🦦</span>
+                <div>
+                  <strong>Otters must play.</strong>
+                  One playful element in every session. Non-negotiable.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COACH -->
+      <section id="coach">
+        <div class="two-column">
+          <div>
+            <div class="section-header" style="margin-bottom:12px;">
+              <div>
+                <h2>Meet your coach.</h2>
+                <p>
+                  A human who also uses training to keep their brain from
+                  chewing through its own leash.
+                </p>
+              </div>
+            </div>
+            <div class="coach-card">
+              <div class="coach-avatar" aria-hidden="true">
+                🐄
+              </div>
+              <div>
+                <div class="coach-meta">Coach · Touch Grass Fitness</div>
+                <div class="coach-name">Coach Al</div>
+                <p style="font-size:13px;color:var(--text-muted);margin-top:3px;">
+                  Lifts because food is delicious, runs to outrun anxiety, and
+                  loves turning “I hate working out” into “wait, that was
+                  actually kind of fun.” Blends strength & conditioning with a
+                  nerdy interest in psychology and how movement shapes mood.
+                </p>
+                <div class="coach-tags">
+                  <span class="coach-tag">Strength & conditioning</span>
+                  <span class="coach-tag">Outdoor & hybrid training</span>
+                  <span class="coach-tag">Beginner-friendly</span>
+                  <span class="coach-tag">Neurospicy-aware spaces</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-header" style="margin-bottom:10px;">
+              <div>
+                <h2>Who this is for.</h2>
+                <p>
+                  You don’t have to be “fit yet” to show up. You just have to be
+                  curious.
+                </p>
+              </div>
+            </div>
+            <div class="list">
+              <div class="list-item">
+                <span class="bullet">🌱</span>
+                <div>
+                  <strong>Former athletes</strong> who miss being coached but
+                  not the toxic grind.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🌧️</span>
+                <div>
+                  <strong>Seasonally sad folks</strong> who want movement to be
+                  a mood tool, not another thing to fail at.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🌾</span>
+                <div>
+                  <strong>Desk-bound humans</strong> who are tired of feeling
+                  like a brain in a jar and want to remember they have a body.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">🧸</span>
+                <div>
+                  <strong>Anxious beginners</strong> who want clear guidance,
+                  non-intimidating vibes, and honest pacing.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="contact-wrapper">
+          <div>
+            <div class="section-header" style="margin-bottom:12px;">
+              <div>
+                <h2>Ready to touch some grass?</h2>
+                <p>
+                  Tell me a little about your body, your brain, and what you
+                  want movement to do for your life. I’ll reply with next
+                  steps, pricing, and options.
+                </p>
+              </div>
+            </div>
+            <!-- NOTE: update the email below to your real coaching email -->
+            <form
+              action="mailto:hello@touchgrassfitness.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <div class="inline-fields">
+                <div class="field-group">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    name="Name"
+                    type="text"
+                    placeholder="Human animal name"
+                    required
+                  />
+                </div>
+                <div class="field-group">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="Email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="inline-fields">
+                <div class="field-group">
+                  <label for="location">Location</label>
+                  <input
+                    id="location"
+                    name="Location"
+                    type="text"
+                    placeholder="City / neighborhood"
+                  />
+                  <div class="helper">
+                    In-person options depend on where you are.
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label for="mode">How do you want to train?</label>
+                  <select id="mode" name="Preferred training mode">
+                    <option value="">Choose one</option>
+                    <option>In-person only</option>
+                    <option>Remote / online only</option>
+                    <option>Hybrid (some in-person, some remote)</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="goals">What are we working toward?</label>
+                <textarea
+                  id="goals"
+                  name="Goals"
+                  placeholder="E.g. get stronger without wrecking my joints, use exercise to help my anxiety, run a 5K without hating every second, have fun outside again…"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="field-group">
+                <label for="feelings">How does movement feel for you right now?</label>
+                <textarea
+                  id="feelings"
+                  name="Current relationship with movement"
+                  placeholder="Anything you want me to know about injuries, pain, mental health stuff, gym anxiety, or what hasn’t worked before."
+                ></textarea>
+              </div>
+
+              <div class="field-group">
+                <label for="contactPref">How do you want me to reply?</label>
+                <select id="contactPref" name="Reply preference">
+                  <option value="">Choose one</option>
+                  <option>Email only</option>
+                  <option>Text (if you include your number below)</option>
+                  <option>Email + short call</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="phone">Phone (optional)</label>
+                <input
+                  id="phone"
+                  name="Phone"
+                  type="tel"
+                  placeholder="If you’d like text or a quick call"
+                />
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Send my “Touch Grass” inquiry
+                <span>📨</span>
+              </button>
+
+              <p class="contact-note">
+                Prefer email? Reach out directly:
+                <a href="mailto:hello@touchgrassfitness.com"
+                  >hello@touchgrassfitness.com</a
+                >
+              </p>
+            </form>
+          </div>
+
+          <aside class="contact-aside">
+            <div class="contact-aside-title">
+              <span>What happens next?</span>
+            </div>
+            <div class="list">
+              <div class="list-item">
+                <span class="bullet">1</span>
+                <div>
+                  <strong>I read your note.</strong> I’ll look at your goals,
+                  your context, and what kind of support you’re asking for.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">2</span>
+                <div>
+                  <strong>We chat.</strong> I’ll reply with questions, options,
+                  and transparent pricing. If it makes sense, we’ll set up a
+                  short call.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">3</span>
+                <div>
+                  <strong>We test-drive.</strong> We’ll run a low-stakes first
+                  session to see how Touch Grass feels in your body and brain.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="bullet">4</span>
+                <div>
+                  <strong>You decide.</strong> If it’s a fit, we’ll build a
+                  training block. If not, you still get ideas you can use.
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Touch Grass Fitness. Built for tired human animals who
+      still want to play.
+    </footer>
+  </div>
+
+  <script>
+    // tiny script to keep the year current
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
