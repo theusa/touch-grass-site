@@ -1,553 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Touch Grass Fitness | Personal Training in Austin</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Touch Grass Fitness is strange, playful personal training for overthinkers, ex-athletes, and desk goblins who want to touch grass and feel strong again."
-  />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ["system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-            mono: ["Menlo", "ui-monospace", "SFMono-Regular", "monospace"],
-          },
-          colors: {
-            grass: {
-              50: "#f4ffe7",
-              100: "#e4ffc0",
-              200: "#c6ff87",
-              300: "#9af84c",
-              400: "#6ad926",
-              500: "#3ca712",
-              600: "#297e0c",
-              700: "#1f5d0f",
-            },
-            sky: {
-              50: "#e9f6ff",
-              200: "#b8e1ff",
-              400: "#79bfff",
-              700: "#21406b",
-            },
-            soil: {
-              50: "#faf2e7",
-              200: "#e4d0b0",
-              700: "#3a2817",
-            },
-          },
-          boxShadow: {
-            squishy: "0 18px 40px rgba(0,0,0,0.25)",
-            note: "0 12px 24px rgba(0,0,0,0.18)",
-            doodle: "6px 6px 0 rgba(0,0,0,0.3)",
-          },
-          rotate: {
-            2: "2deg",
-            3: "3deg",
-            4: "4deg",
-            6: "6deg",
-          },
-        },
-      },
-    };
-  </script>
-  <style>
-    body {
-      background:
-        radial-gradient(circle at top left, rgba(186, 230, 253, 0.9), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(190, 242, 100, 0.7), transparent 55%),
-        radial-gradient(circle at center, rgba(250, 244, 221, 0.9), transparent 60%),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(148, 163, 184, 0.08) 0px,
-          rgba(148, 163, 184, 0.08) 1px,
-          transparent 1px,
-          transparent 26px
-        );
-      background-color: #fdfaf4;
-    }
+import React, { useState } from 'react';
+import { CheckCircle2, ArrowRight, Send, Star } from 'lucide-react';
 
-    .scribble-border {
-      position: relative;
-    }
+export const ActivityGenerator: React.FC = () => {
+  const [view, setView] = useState<'form' | 'success'>('form');
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '', 
+    phone: '',
+    goal: 'Touch Grass' 
+  });
 
-    .scribble-border::before {
-      content: "";
-      position: absolute;
-      inset: -6px;
-      border: 2px dashed rgba(15, 23, 42, 0.35);
-      border-radius: 1.75rem;
-      pointer-events: none;
-      mix-blend-mode: multiply;
-    }
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
 
-    .wiggle:hover {
-      transform: translateY(-2px) rotate(-1deg);
-    }
+    // SIMULATE SERVER REQUEST
+    // To make this live:
+    // 1. Create a free account on formspree.io
+    // 2. Create a new form
+    // 3. Replace this setTimeout with:
+    //    await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+    //      method: "POST",
+    //      body: JSON.stringify(formData),
+    //      headers: { 'Content-Type': 'application/json' }
+    //    });
+    
+    setTimeout(() => {
+      setLoading(false);
+      setView('success');
+      console.log("Form Submitted:", formData);
+    }, 1500);
+  };
 
-    .stamp {
-      letter-spacing: 0.25em;
-      box-shadow: 4px 4px 0 rgba(15, 23, 42, 0.8);
-    }
-  </style>
-</head>
-<body class="min-h-screen text-soil-700 antialiased">
-  <div class="min-h-screen flex flex-col">
-    <!-- SUPER NON-STANDARD NAV -->
-    <header class="sticky top-0 z-40">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div class="flex items-center justify-between rounded-3xl border border-black/15 bg-white/85 backdrop-blur shadow-squishy px-4 py-2 relative overflow-hidden">
-          <!-- little grass doodles -->
-          <div class="pointer-events-none absolute -left-6 top-0 text-[24px] opacity-20 select-none">🌱🌱</div>
-          <div class="pointer-events-none absolute -right-4 -bottom-3 text-[20px] opacity-20 select-none">🧌</div>
+  return (
+    <section id="activity-generator" className="py-24 bg-cream relative overflow-hidden">
+       
+       {/* Decorative Elements */}
+       <div className="absolute top-20 left-10 animate-spin-slow opacity-20 hidden md:block">
+          <Star className="w-24 h-24 text-pop-yellow fill-current" />
+       </div>
+       <div className="absolute bottom-20 right-10 animate-bounce-crazy opacity-20 hidden md:block">
+          <div className="w-16 h-16 rounded-full bg-pop-red"></div>
+       </div>
 
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-grass-400 to-grass-700 flex items-center justify-center text-[11px] font-black text-white tracking-[0.14em] rotate-[-9deg] shadow-doodle border border-black/30">
-              TG
-            </div>
-            <div class="leading-tight">
-              <p class="text-[13px] font-semibold tracking-tight">Touch Grass Fitness</p>
-              <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-soil-700/70">ANALOG · STRANGE · STRONG</p>
-            </div>
-          </div>
-          <div class="hidden md:flex items-center gap-6 text-[11px] font-mono uppercase tracking-[0.18em]">
-            <a href="#field-notes" class="hover:text-grass-700">field notes</a>
-            <a href="#creatures" class="hover:text-grass-700">creatures</a>
-            <a href="#rituals" class="hover:text-grass-700">rituals</a>
-            <a href="#work" class="hover:text-grass-700">how we work</a>
-            <a href="#start" class="hover:text-grass-700">start</a>
-          </div>
-          <div class="hidden md:flex items-center gap-2">
-            <span class="hidden lg:inline-block rounded-full border border-dashed border-soil-700/40 bg-grass-100 px-3 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-soil-700/90">screen time: high · movement: patchable</span>
-            <a
-              href="#start"
-              class="wiggle inline-flex items-center gap-2 rounded-full bg-soil-700 px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.18em] text-soil-50 shadow-md"
-            >
-              🌱 book a weird little consult
-            </a>
-          </div>
-          <button
-            id="mobileMenuBtn"
-            class="md:hidden inline-flex items-center justify-center rounded-full border border-black/15 bg-white/80 px-3 py-1 text-[11px] font-mono"
-          >
-            MENU
-          </button>
-        </div>
-      </div>
-
-      <nav id="mobileMenu" class="md:hidden hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="mt-2 rounded-3xl border border-black/10 bg-white/95 px-4 py-3 text-[11px] font-mono uppercase tracking-[0.18em] flex flex-col gap-2">
-          <a href="#field-notes">field notes</a>
-          <a href="#creatures">creatures</a>
-          <a href="#rituals">rituals</a>
-          <a href="#work">how we work</a>
-          <a href="#start" class="font-semibold">start</a>
-        </div>
-      </nav>
-    </header>
-
-    <main class="flex-1">
-      <!-- HERO: FIELD GUIDE / ZINE STYLE + STAMP + DOODLES -->
-      <section class="pt-8 sm:pt-10 lg:pt-12 relative overflow-hidden">
-        <!-- floating doodles -->
-        <div class="pointer-events-none absolute left-2 top-28 text-[32px] opacity-20">🌤️</div>
-        <div class="pointer-events-none absolute right-5 bottom-10 text-[28px] opacity-20 rotate-[-10deg]">🥾</div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.15fr,0.85fr] gap-6">
-          <!-- vertical spine -->
-          <div class="hidden lg:flex flex-col items-center pt-4">
-            <div class="h-40 w-[2px] bg-gradient-to-b from-soil-700/80 via-soil-700/40 to-transparent"></div>
-            <p class="mt-3 text-[9px] font-mono uppercase tracking-[0.32em] rotate-180 [writing-mode:vertical-rl] text-soil-700/80">
-              touch grass field manual · vol. 01
-            </p>
+       <div className="max-w-4xl mx-auto px-6 relative z-10">
+          
+          <div className="text-center mb-12">
+             <div className="inline-block bg-pop-green px-4 py-1 rounded-full border-2 border-ink font-bold text-xs uppercase mb-4 shadow-hard">
+                Accepting New Humans
+             </div>
+             <h2 className="font-display text-5xl md:text-7xl text-ink">
+                JOIN THE <span className="text-pop-blue">HERD</span>
+             </h2>
+             <p className="font-bold text-xl mt-6 max-w-2xl mx-auto opacity-70">
+                Ready to ditch the fluorescent lights and reclaim your wild self? 
+                Drop your info below. We'll reach out to schedule your first session.
+             </p>
           </div>
 
-          <!-- main hero area -->
-          <div class="grid lg:grid-cols-[1.1fr,0.9fr] gap-6 lg:gap-10 items-stretch">
-            <!-- left: big copy + weird chips -->
-            <div class="space-y-6 relative">
-              <div class="absolute -left-5 -top-4 hidden sm:block rotate-[-6deg]">
-                <div class="stamp inline-block rounded-md border border-soil-700/70 bg-soil-50 px-3 py-1 text-[9px] font-mono uppercase text-soil-700/90">
-                  limited run · austin, tx
+          <div className="bg-white border-4 border-ink rounded-3xl p-8 md:p-12 shadow-hard-xl transition-all duration-300">
+            
+             {/* VIEW: FORM */}
+             {view === 'form' && (
+                <form onSubmit={handleFormSubmit} className="space-y-6 text-left animate-in fade-in slide-in-from-bottom-4 duration-500">
+                   
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                         <label className="block font-bold mb-2 uppercase text-sm tracking-wider">Name</label>
+                         <input 
+                           required
+                           type="text" 
+                           placeholder="Jane Doe"
+                           className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all"
+                           value={formData.name}
+                           onChange={e => setFormData({...formData, name: e.target.value})}
+                         />
+                      </div>
+                      
+                      <div>
+                         <label className="block font-bold mb-2 uppercase text-sm tracking-wider">Phone (Optional)</label>
+                         <input 
+                           type="tel" 
+                           placeholder="(555) 123-4567"
+                           className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all"
+                           value={formData.phone}
+                           onChange={e => setFormData({...formData, phone: e.target.value})}
+                         />
+                      </div>
+                   </div>
+
+                   <div>
+                      <label className="block font-bold mb-2 uppercase text-sm tracking-wider">Email Address</label>
+                      <input 
+                        required
+                        type="email" 
+                        placeholder="jane@example.com"
+                        className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all"
+                        value={formData.email}
+                        onChange={e => setFormData({...formData, email: e.target.value})}
+                      />
+                   </div>
+
+                   <div>
+                      <label className="block font-bold mb-2 uppercase text-sm tracking-wider">What's the Goal?</label>
+                      <select 
+                        className="w-full p-4 rounded-xl border-4 border-ink bg-gray-50 font-bold focus:outline-none focus:ring-4 focus:ring-pop-yellow transition-all appearance-none cursor-pointer"
+                        value={formData.goal}
+                        onChange={e => setFormData({...formData, goal: e.target.value})}
+                      >
+                         <option value="Touch Grass">Just want to Touch Grass</option>
+                         <option value="Get Strong">Get Strong & Carry Logs</option>
+                         <option value="Mental Health">Mental Reset / Stress Relief</option>
+                         <option value="Adventure">Train for an Adventure</option>
+                         <option value="Chaos">Pure Chaos (Surprise Me)</option>
+                      </select>
+                   </div>
+
+                   <div className="pt-4">
+                      <button 
+                        type="submit" 
+                        disabled={loading}
+                        className="w-full bg-pop-red text-cream font-display text-2xl py-5 rounded-xl border-4 border-ink shadow-hard hover:translate-y-1 hover:shadow-none hover:bg-pop-blue transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                      >
+                         {loading ? (
+                           <>Sending...</>
+                         ) : (
+                           <>LET'S GO 🚀</>
+                         )}
+                      </button>
+                      <p className="text-center mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                         No Spam. Only Good Vibes.
+                      </p>
+                   </div>
+                </form>
+             )}
+
+             {/* VIEW: SUCCESS */}
+             {view === 'success' && (
+                <div className="text-center py-12 animate-in zoom-in-90 duration-500">
+                   <div className="inline-flex items-center justify-center w-24 h-24 bg-pop-green text-cream rounded-full border-4 border-ink mb-6 animate-bounce">
+                      <CheckCircle2 className="w-12 h-12" />
+                   </div>
+                   <h3 className="font-display text-4xl mb-4">You're In!</h3>
+                   <p className="font-bold text-xl text-gray-600 mb-8 max-w-md mx-auto">
+                      We've received your signal. A real human (probably eating a protein bar) will text or email you shortly.
+                   </p>
+                   <button 
+                     onClick={() => {
+                        setView('form');
+                        setFormData({ name: '', email: '', phone: '', goal: 'Touch Grass' });
+                     }}
+                     className="bg-cream text-ink font-bold px-8 py-3 rounded-full border-4 border-ink hover:bg-pop-yellow transition-all"
+                   >
+                      Send Another One
+                   </button>
                 </div>
-              </div>
+             )}
 
-              <div class="inline-flex flex-wrap items-center gap-2 text-[10px] font-mono uppercase tracking-[0.24em]">
-                <span class="rounded-full bg-soil-700 text-soil-50 px-3 py-1 shadow-sm">status: indoor goblin</span>
-                <span class="rounded-full bg-grass-200 text-soil-700 px-3 py-1 border border-soil-700/20">→ outdoor creature (in progress)</span>
-                <span class="rounded-full bg-sky-50 text-soil-700 px-3 py-1 border border-dashed border-soil-700/30">anxious but willing</span>
-              </div>
-
-              <h1 class="text-[2.1rem] sm:text-[2.5rem] lg:text-[2.8rem] font-black leading-tight tracking-tight">
-                Personal training for people whose
-                <span class="underline decoration-wavy decoration-grass-400">brains are louder than their quads</span>
-                — and who secretly want to feel<br class="hidden sm:block" /> a little feral again.
-              </h1>
-
-              <p class="text-sm sm:text-[15px] text-soil-700/90 max-w-xl">
-                Touch Grass Fitness is a tiny, strange training studio concept: fewer mirrors, more sky; fewer
-                6-week punishments, more long-haul sturdiness. We lift, carry, breathe, and walk until life
-                feels less like a browser with 47 tabs open.
-              </p>
-
-              <div class="grid sm:grid-cols-3 gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-soil-700/80">
-                <div class="rounded-2xl bg-white/90 border border-soil-700/10 px-3 py-3 shadow-note rotate-[-3deg] scribble-border">
-                  <p class="text-[9px] text-soil-700/60 mb-1">ENVIRONMENT</p>
-                  <p>parks · garages · barebones gyms</p>
-                </div>
-                <div class="rounded-2xl bg-white/90 border border-soil-700/10 px-3 py-3 shadow-note rotate-[2deg]">
-                  <p class="text-[9px] text-soil-700/60 mb-1">MODALITY</p>
-                  <p>lifting · carrying · walking · breath</p>
-                </div>
-                <div class="rounded-2xl bg-white/90 border border-soil-700/10 px-3 py-3 shadow-note -rotate-1">
-                  <p class="text-[9px] text-soil-700/60 mb-1">VIBE</p>
-                  <p>gentle chaos, no burpee cults</p>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap items-center gap-3 pt-2">
-                <a
-                  href="#start"
-                  class="wiggle inline-flex items-center gap-2 rounded-full bg-soil-700 px-6 py-2.5 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-soil-50 shadow-squishy"
-                >
-                  🌿 book a free consult
-                </a>
-                <button
-                  type="button"
-                  onclick="document.getElementById('field-notes').scrollIntoView({behavior:'smooth'})"
-                  class="inline-flex items-center rounded-full border border-soil-700/30 bg-white/80 px-4 py-2 text-[11px] font-mono text-soil-700/80 hover:border-soil-700/70"
-                >
-                  read the field notes ↓
-                </button>
-              </div>
-            </div>
-
-            <!-- right: weird field-report board + mode toggle -->
-            <div class="flex items-stretch">
-              <div class="w-full rounded-3xl bg-white/95 border border-soil-700/15 shadow-squishy p-4 sm:p-5 relative overflow-hidden">
-                <div class="absolute -top-10 -right-16 h-40 w-40 rounded-full bg-grass-200/70 blur-3xl"></div>
-                <div class="absolute -bottom-20 -left-16 h-44 w-44 rounded-full bg-sky-200/70 blur-3xl"></div>
-
-                <div class="relative space-y-4 text-[11px] font-mono">
-                  <div class="flex items-center justify-between gap-2">
-                    <p class="uppercase tracking-[0.18em] text-soil-700/70">field report: 6 months from now</p>
-                    <div class="inline-flex items-center rounded-full bg-soil-50 border border-soil-700/20 overflow-hidden text-[9px]">
-                      <span class="px-2 py-1 bg-soil-700 text-soil-50">OUTDOOR MODE</span>
-                      <span class="px-2 py-1 text-soil-700/60">INDOOR MODE</span>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3">
-                    <div class="rounded-2xl bg-soil-50/90 border border-soil-700/10 px-3 py-3">
-                      <p class="text-[9px] text-soil-700/60 mb-1">BEFORE</p>
-                      <ul class="space-y-1 text-[11px] text-soil-700/90">
-                        <li>• stairs = mini boss fight</li>
-                        <li>• "I slept weird" back pain</li>
-                        <li>• 0–3k steps, vibes: crumbly</li>
-                      </ul>
-                    </div>
-                    <div class="rounded-2xl bg-grass-50/90 border border-soil-700/10 px-3 py-3">
-                      <p class="text-[9px] text-soil-700/60 mb-1">AFTER</p>
-                      <ul class="space-y-1 text-[11px] text-soil-700/90">
-                        <li>• stairs = warmup, not boss</li>
-                        <li>• fewer surprise joint protests</li>
-                        <li>• 6–10k steps, vibes: sturdy</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="mt-2 rounded-2xl border border-dashed border-soil-700/30 bg-white/85 px-3 py-3">
-                    <p class="text-[9px] text-soil-700/60 mb-1">MEASURABLE WEIRDNESS</p>
-                    <ul class="space-y-1">
-                      <li>☑ can carry all the groceries in one go</li>
-                      <li>☑ fewer 2am doom-scroll spirals</li>
-                      <li>☑ at least one hill that no longer scares you</li>
-                    </ul>
-                  </div>
-
-                  <p class="pt-1 text-[10px] text-soil-700/70">
-                    Results powered by 1–3 sessions / week + walk rituals + tiny behavior mods. No 30-day punishments.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
-
-      <!-- FIELD NOTES / ABOUT -->
-      <section id="field-notes" class="py-12 sm:py-14 lg:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-[1.1fr,0.9fr] gap-8">
-          <div class="space-y-4">
-            <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-soil-700/70">chapter 01 · field notes</p>
-            <h2 class="text-xl sm:text-2xl font-black tracking-tight">You don&apos;t need a new personality. You need a sturdier body and friendlier surroundings.</h2>
-            <p class="text-sm sm:text-[15px] text-soil-700/90">
-              Touch Grass Fitness exists because most training either pretends you&apos;re an athlete with a
-              recovery team… or a machine that should "want it more." Real people have anxiety, deadlines,
-              creaky knees, and group chats.
-            </p>
-            <p class="text-sm sm:text-[15px] text-soil-700/90">
-              So instead of chasing extremes, we build a boring-in-a-good-way base: simple strength patterns,
-              walk rituals, and outdoor moments that stack up over months. You still get stronger and look
-              different; you just don&apos;t have to burn down your life to do it.
-            </p>
-            <ul class="mt-2 space-y-2 text-sm text-soil-700/95">
-              <li>• <span class="font-semibold">Strength</span> first, aesthetics as a side quest.</li>
-              <li>• <span class="font-semibold">Environment</span> upgrades (park loops, garage gyms, tiny-apartment hacks).</li>
-              <li>• <span class="font-semibold">Rhythm</span> that survives stressful weeks, not just perfect ones.</li>
-            </ul>
-          </div>
-
-          <div class="rounded-3xl bg-white/95 border border-soil-700/15 shadow-note p-5 sm:p-6 space-y-4 scribble-border">
-            <p class="text-[11px] font-mono uppercase tracking-[0.24em] text-soil-700/70">good fit if…</p>
-            <ul class="space-y-2 text-sm text-soil-700/95">
-              <li>▸ You&apos;re a brainy, anxious, or easily-overstimulated human who wants someone else to run the plan.</li>
-              <li>▸ You&apos;re a former athlete who&apos;s over ego lifting but misses feeling powerful.</li>
-              <li>▸ You care about mood, focus, and stress at least as much as physique.</li>
-              <li>▸ You&apos;d like your body to feel like an ally again, not a random error message.</li>
-            </ul>
-            <p class="text-[11px] font-mono text-soil-700/70">
-              Not ideal if you want weigh-ins, punishment workouts, or "no excuses" energy. There are other gyms for that.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CREATURES / WHO IT'S FOR -->
-      <section id="creatures" class="py-12 sm:py-14 lg:py-16 border-y border-soil-700/10 bg-white/80">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="mb-6 flex flex-col gap-3">
-            <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-soil-700/70">chapter 02 · creatures of habit</p>
-            <h2 class="text-xl sm:text-2xl font-black tracking-tight">Three creatures who thrive here</h2>
-            <p class="text-sm sm:text-[15px] text-soil-700/90 max-w-2xl">
-              You don&apos;t have to fit neatly in a box, but if you see yourself in any of these, we&apos;ll probably get along.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-4 sm:gap-5 text-sm">
-            <div class="rounded-3xl bg-soil-50/90 border border-soil-700/15 shadow-note p-4 sm:p-5 -rotate-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70 mb-1">the desk goblin</p>
-              <p class="text-[26px] mb-1">🧌</p>
-              <p class="text-soil-700/95">Sits 8+ hours per day. Steps unknown. Has a favorite chair and a
-                secret fear of moving heavy things in public.</p>
-              <p class="mt-2 text-[11px] font-mono text-soil-700/70">goal: feel less breakable, more like a
-                person who says yes to hikes and pickup games.</p>
-            </div>
-
-            <div class="rounded-3xl bg-sky-50/90 border border-soil-700/15 shadow-note p-4 sm:p-5 rotate-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70 mb-1">the overthinker</p>
-              <p class="text-[26px] mb-1">🧠</p>
-              <p class="text-soil-700/95">Brain runs hot. Anxiety, rumination, what-ifs. Wants a physical
-                practice that quiets the noise without becoming a new obsession.</p>
-              <p class="mt-2 text-[11px] font-mono text-soil-700/70">goal: have a body routine that anchors the day.</p>
-            </div>
-
-            <div class="rounded-3xl bg-grass-50/90 border border-soil-700/15 shadow-note p-4 sm:p-5 -rotate-3">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70 mb-1">the former athlete</p>
-              <p class="text-[26px] mb-1">🏅</p>
-              <p class="text-soil-700/95">Used to go hard. Now has knees, a job, and maybe kids. Misses
-                feeling explosive but wants to train like someone who plans to use their joints at 70.</p>
-              <p class="mt-2 text-[11px] font-mono text-soil-700/70">goal: reclaim power without pretending you&apos;re 19.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- RITUALS / METHOD -->
-      <section id="rituals" class="py-12 sm:py-14 lg:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
-          <div class="flex flex-col gap-3">
-            <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-soil-700/70">chapter 03 · movement rituals</p>
-            <h2 class="text-xl sm:text-2xl font-black tracking-tight">What training actually looks like</h2>
-            <p class="text-sm sm:text-[15px] text-soil-700/90 max-w-2xl">
-              No mystery WODs of doom. Just a handful of rituals we repeat and evolve until your body starts
-              filing fewer complaints.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-4 sm:gap-5 text-sm">
-            <div class="rounded-3xl bg-white/95 border border-soil-700/15 shadow-note p-4 sm:p-5 flex flex-col gap-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">anchor 01 · strength slots</p>
-              <p class="font-semibold">2–3 lifts per week</p>
-              <p class="text-soil-700/90">Squats, hinges, pushes, pulls, carries. Enough load to get stronger,
-                enough coaching to feel safe.</p>
-              <p class="text-[11px] font-mono text-soil-700/70">location: gym, garage, park with a few tools.</p>
-            </div>
-
-            <div class="rounded-3xl bg-white/95 border border-soil-700/15 shadow-note p-4 sm:p-5 flex flex-col gap-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">anchor 02 · walk loops</p>
-              <p class="font-semibold">non-heroic daily movement</p>
-              <p class="text-soil-700/90">We build one or two easy loops into your week: solo walks, phone
-                calls, podcast loops, kid-chasing. Low drama, high impact.</p>
-              <p class="text-[11px] font-mono text-soil-700/70">intensity: talkable, sustainable.</p>
-            </div>
-
-            <div class="rounded-3xl bg-white/95 border border-soil-700/15 shadow-note p-4 sm:p-5 flex flex-col gap-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">anchor 03 · nervous system notes</p>
-              <p class="font-semibold">stress-aware programming</p>
-              <p class="text-soil-700/90">We adjust for sleep, work, and life chaos instead of pretending you
-                live in a vacuum. Sometimes the bravest thing is going lighter.</p>
-              <p class="text-[11px] font-mono text-soil-700/70">we track: stress, soreness, wins, not just weight.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HOW WE WORK / OFFERS -->
-      <section id="work" class="py-12 sm:py-14 lg:py-16 border-y border-soil-700/10 bg-soil-50/95">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-            <div>
-              <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-soil-700/70">chapter 04 · ways to play</p>
-              <h2 class="text-xl sm:text-2xl font-black tracking-tight">How we can work together</h2>
-              <p class="mt-2 text-sm sm:text-[15px] text-soil-700/90 max-w-xl">
-                Everything starts with a free call. You bring your body, your context, and your worries. I bring
-                questions, options, and a refusal to be weird about where you&apos;re starting from.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-4 sm:gap-5 text-sm">
-            <div class="rounded-3xl bg-white border border-soil-700/15 shadow-note p-5 sm:p-6 flex flex-col gap-3 -rotate-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">mode 01 · 1:1</p>
-              <p class="font-semibold">Personal training in Austin</p>
-              <p class="text-soil-700/90">60-ish minute sessions in a gym, a garage, or a park. Form coaching,
-                progression, and just enough hype.</p>
-              <ul class="text-[13px] text-soil-700/95 space-y-1">
-                <li>• 1–3x per week</li>
-                <li>• Totally custom plan</li>
-                <li>• Check-ins for sleep, stress, and mood</li>
-              </ul>
-            </div>
-
-            <div class="rounded-3xl bg-grass-50 border border-soil-700/15 shadow-note p-5 sm:p-6 flex flex-col gap-3 rotate-2">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">mode 02 · micro-crew</p>
-              <p class="font-semibold">Buddy & small-group training</p>
-              <p class="text-soil-700/90">Train with 1–4 other humans chasing similar goals. Same thoughtful
-                programming, more jokes, lower cost per person.</p>
-              <ul class="text-[13px] text-soil-700/95 space-y-1">
-                <li>• Great for friends / couples</li>
-                <li>• Individual scaling inside the group</li>
-                <li>• Outdoors or indoors depending on weather</li>
-              </ul>
-            </div>
-
-            <div class="rounded-3xl bg-sky-50 border border-soil-700/15 shadow-note p-5 sm:p-6 flex flex-col gap-3 -rotate-3">
-              <p class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">mode 03 · hybrid / remote</p>
-              <p class="font-semibold">Programming + check-ins</p>
-              <p class="text-soil-700/90">For self-starters who still want a brain to borrow. You get training
-                blocks built around your gear and schedule.</p>
-              <ul class="text-[13px] text-soil-700/95 space-y-1">
-                <li>• Custom program, updated regularly</li>
-                <li>• Video form review as needed</li>
-                <li>• Optional monthly or biweekly calls</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- START / CONTACT -->
-      <section id="start" class="py-12 sm:py-14 lg:py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-          <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-soil-700/70">chapter 05 · first contact</p>
-          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Ready to be a little less indoors?</h2>
-          <p class="text-sm sm:text-[15px] text-soil-700/90 max-w-xl mx-auto">
-            Tell me about your body, your brain, and what you want to be able to do six months from now.
-            If it&apos;s a fit, we&apos;ll start small. If not, I&apos;ll try to point you toward someone who is.
-          </p>
-
-          <div class="flex flex-wrap justify-center gap-3 pt-2">
-            <a
-              href="https://calendly.com/your-calendly-link"
-              class="wiggle inline-flex items-center gap-2 rounded-full bg-soil-700 px-6 py-2.5 text-sm font-mono uppercase tracking-[0.2em] text-soil-50 shadow-squishy"
-            >
-              🌱 schedule a free consult
-            </a>
-            <a
-              href="mailto:hello@touchgrassfitness.com"
-              class="inline-flex items-center rounded-full border border-soil-700/30 bg-white/80 px-5 py-2 text-sm font-mono text-soil-700/85 hover:border-soil-700/70"
-            >
-              Email: hello@touchgrassfitness.com
-            </a>
-            <a
-              href="tel:+15125551234"
-              class="inline-flex items-center rounded-full border border-soil-700/30 bg-white/80 px-5 py-2 text-sm font-mono text-soil-700/85 hover:border-soil-700/70"
-            >
-              Call / text: (512) 555-1234
-            </a>
-          </div>
-
-          <!-- Form currently just UI, doesn’t send anywhere yet -->
-          <form class="mt-6 max-w-xl mx-auto text-left grid gap-3 text-sm">
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div>
-                <label class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">Name</label>
-                <input
-                  type="text"
-                  class="mt-1 w-full rounded-2xl border border-soil-700/20 bg-white/85 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-grass-300 focus:border-grass-400"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">Email</label>
-                <input
-                  type="email"
-                  class="mt-1 w-full rounded-2xl border border-soil-700/20 bg-white/85 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-grass-300 focus:border-grass-400"
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-            <div>
-              <label class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">What&apos;s going on?</label>
-              <input
-                type="text"
-                class="mt-1 w-full rounded-2xl border border-soil-700/20 bg-white/85 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-grass-300 focus:border-grass-400"
-                placeholder="e.g., knees, back, energy, mood, all of the above"
-              />
-            </div>
-            <div>
-              <label class="text-[11px] font-mono uppercase tracking-[0.22em] text-soil-700/70">Anything else I should know?</label>
-              <textarea
-                rows="4"
-                class="mt-1 w-full rounded-2xl border border-soil-700/20 bg-white/85 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-grass-300 focus:border-grass-400"
-                placeholder="Injuries, schedule constraints, fears, spicy details, etc."
-              ></textarea>
-            </div>
-            <button
-              type="button"
-              class="wiggle inline-flex justify-center rounded-full bg-grass-300 px-6 py-2.5 text-sm font-mono uppercase tracking-[0.2em] text-soil-800 shadow-md hover:bg-grass-200"
-            >
-              send (or just email me directly)
-            </button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-soil-700/10 bg-white/85">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-mono text-soil-700/80">
-        <p>© <span id="year"></span> Touch Grass Fitness · Austin, Texas</p>
-        <p>more sky, less scroll.</p>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    const mobileBtn = document.getElementById("mobileMenuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    if (mobileBtn && mobileMenu) {
-      mobileBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    }
-    const yearSpan = document.getElementById("year");
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
-  </script>
-</body>
-</html>
+       </div>
+    </section>
+  );
+};
