@@ -41,6 +41,11 @@
       }
     };
   </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body class="bg-slate-950 text-slate-50 font-sans antialiased">
   <div class="min-h-screen">
@@ -119,7 +124,7 @@
             </a>
           </div>
 
-          <!-- NEW: age-inclusive chips -->
+          <!-- age-inclusive chips -->
           <div class="mt-4 flex flex-wrap gap-2 text-[11px] text-slate-200">
             <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1">
               20s–30s · Build strength, confidence & performance
@@ -332,7 +337,7 @@
                 pace your joints (and life) can handle.</p>
             </div>
 
-            <!-- NEW: explicit all-ages reassurance -->
+            <!-- explicit all-ages reassurance -->
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-[12px] text-slate-100">
               <p>In your 20s and ready to finally get in shape? In your 40s or 50s juggling work and family? In your 60s
                 wanting to stay strong, steady, and safe?</p>
@@ -356,7 +361,6 @@
               Tell me a bit about where you’re at and what you want. I’ll follow up with options for 1:1 coaching,
               programming-only, or hybrid support.
             </p>
-            <!-- NEW: all ages welcome line -->
             <p class="mt-2 text-xs leading-relaxed text-slate-300">
               All ages welcome—from 20s to 60s and beyond. We’ll choose movements and intensities that feel safe,
               doable, and exciting for you.
@@ -370,9 +374,10 @@
           </div>
 
           <div class="rounded-3xl border border-slate-800 bg-slate-950/80 p-5 shadow-soft">
-            <!-- Replace the action with your form handler (Formspree, Tally, etc.) -->
+            <!-- Replace YOUR_FORM_ID_HERE with your Formspree form ID -->
             <form
-              action="#"
+              id="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID_HERE"
               method="POST"
               class="space-y-4 text-sm"
             >
@@ -443,6 +448,9 @@
               >
                 Submit &amp; start training fast and slow
               </button>
+
+              <!-- Status message -->
+              <p id="form-status" class="mt-2 text-[11px] text-slate-400"></p>
             </form>
           </div>
         </div>
@@ -463,8 +471,51 @@
   </div>
 
   <script>
-    // Small script to keep the year current
+    // Keep the year current
     document.getElementById('year-span').textContent = new Date().getFullYear();
+
+    // Handle form submission with fetch for nicer UX
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+
+    if (form) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        statusEl.textContent = 'Sending...';
+        statusEl.classList.remove('text-emerald-400');
+        statusEl.classList.remove('text-rose-400');
+        statusEl.classList.add('text-slate-400');
+
+        const formData = new FormData(form);
+        const endpoint = form.action;
+
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            form.reset();
+            statusEl.textContent = 'Thanks for reaching out! I’ll get back to you soon.';
+            statusEl.classList.remove('text-slate-400');
+            statusEl.classList.add('text-emerald-400');
+          } else {
+            statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
+            statusEl.classList.remove('text-slate-400');
+            statusEl.classList.add('text-rose-400');
+          }
+        } catch (error) {
+          statusEl.textContent = 'Network error. Please check your connection or email me directly.';
+          statusEl.classList.remove('text-slate-400');
+          statusEl.classList.add('text-rose-400');
+        }
+      });
+    }
   </script>
 </body>
 </html>
