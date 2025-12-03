@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Training Fast and Slow | Personal Training</title>
+  <title>Training Fast and Slow | Personal Training That Hits Both Extremes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Training Fast and Slow – personal training for every age that mixes sprint days and slow grind days for a strong body and calm brain."
+    content="Training Fast and Slow combines explosive, fast movements with heavy, slow strength and long slow distance for body and brain results that last."
   />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,692 +18,632 @@
             body: ["system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
           },
           colors: {
-            /* Fast = warm orange */
-            brand: {
-              50:  "#FFF7ED",
-              100: "#FFEDD5",
-              200: "#FED7AA",
-              300: "#FDBA74",
-              400: "#FB923C",
-              500: "#F97316",
-              600: "#EA580C",
-              700: "#C2410C",
-              800: "#9A3412",
-              900: "#7C2D12"
+            ink: {
+              900: "#050416",
+              800: "#080824",
             },
-            /* Slow / calm = teal */
-            calm: {
-              50:  "#ECFEFF",
-              100: "#CFFAFE",
-              200: "#A5F3FC",
-              300: "#67E8F9",
-              400: "#22D3EE",
-              500: "#06B6D4",
-              600: "#0891B2",
-              700: "#0E7490",
-              800: "#155E75",
-              900: "#164E63"
-            }
-          }
-        }
-      }
+            fast: {
+              300: "#ffd3a1",
+              400: "#ffb766",
+              500: "#ff9233",
+              600: "#ff7a00",
+            },
+            slow: {
+              300: "#9cf3ff",
+              400: "#67e0f5",
+              500: "#2db6d2",
+            },
+            accent: {
+              pink: "#ff8ed4",
+              purple: "#b49cff",
+              mint: "#9fffc7",
+            },
+          },
+          boxShadow: {
+            kawaii: "0 18px 40px rgba(0,0,0,0.45)",
+          },
+        },
+      },
     };
   </script>
   <style>
-    html {
-      scroll-behavior: smooth;
+    /* Cute wavy divider */
+    .wave {
+      background: radial-gradient(circle at 0 0, #ffb766 0, transparent 50%),
+                  radial-gradient(circle at 100% 0, #9cf3ff 0, transparent 55%),
+                  radial-gradient(circle at 0 100%, #b49cff 0, transparent 55%),
+                  radial-gradient(circle at 100% 100%, #ff8ed4 0, transparent 55%);
+      opacity: 0.25;
+      mix-blend-mode: screen;
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-50 font-body">
-  <div class="min-h-screen flex flex-col">
+<body class="min-h-screen bg-ink-900 text-white font-body antialiased">
+  <!-- Page wrapper -->
+  <div class="relative overflow-hidden">
+    <!-- Background blobs -->
+    <div class="pointer-events-none fixed inset-0 opacity-60 mix-blend-screen">
+      <div class="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-fast-500 blur-3xl"></div>
+      <div class="absolute top-20 right-0 h-80 w-80 rounded-full bg-slow-500 blur-3xl"></div>
+      <div class="absolute bottom-0 left-24 h-64 w-64 rounded-full bg-accent-purple blur-3xl"></div>
+    </div>
 
-    <!-- Nav -->
-    <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <div class="flex items-center gap-3">
-          <!-- Rabbit/Turtle badge cluster -->
-          <div class="relative flex items-center">
-            <div class="h-9 w-9 rounded-2xl bg-gradient-to-br from-brand-500 to-calm-500 shadow-lg shadow-brand-500/40 flex items-center justify-center">
-              <span class="text-xl">🐇</span>
-            </div>
-            <div class="-ml-3 h-7 w-7 rounded-2xl border border-slate-900 bg-slate-900/90 flex items-center justify-center shadow-md shadow-black/40">
-              <span class="text-lg">🐢</span>
-            </div>
+    <header class="relative z-10 border-b border-white/10 bg-ink-900/80 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
+        <a href="#" class="flex items-center gap-3">
+          <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-ink-800 shadow-kawaii ring-2 ring-fast-400/70">
+            <span class="text-xl">🐇</span>
+            <span class="-ml-2 text-xl">🐢</span>
           </div>
-          <div>
-            <p class="font-display font-semibold tracking-tight text-sm sm:text-base">
-              Training Fast and Slow
+          <div class="leading-tight">
+            <p class="font-display text-lg font-semibold tracking-tight">
+              Training <span class="text-fast-400">Fast</span> & <span class="text-slow-400">Slow</span>
             </p>
-            <p class="text-[0.7rem] text-slate-400 hidden sm:block">
-              Some days rabbit. Some days turtle. All ages welcome.
-            </p>
+            <p class="text-xs text-white/70">Bodies & brains that thrive at every speed</p>
           </div>
-        </div>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#spectrum" class="text-slate-300 hover:text-white transition-colors">Fast & Slow</a>
-          <a href="#mind" class="text-slate-300 hover:text-white transition-colors">Body + Brain</a>
-          <a href="#coaching" class="text-slate-300 hover:text-white transition-colors">Coaching</a>
-          <a href="#consult" class="px-3 py-1.5 rounded-full bg-brand-500 hover:bg-brand-400 text-xs font-semibold text-slate-950 shadow-lg shadow-brand-500/40">
-            Free consult
-          </a>
+        </a>
+
+        <nav class="hidden gap-6 text-sm text-white/80 md:flex">
+          <a href="#how" class="hover:text-fast-300">How it works</a>
+          <a href="#mental" class="hover:text-fast-300">Body + brain</a>
+          <a href="#fun" class="hover:text-fast-300">Fun first</a>
+          <a href="#for-who" class="hover:text-fast-300">Who we train</a>
+          <a href="#trainers" class="hover:text-fast-300">Trainers</a>
         </nav>
+
+        <a
+          href="#consult"
+          class="hidden rounded-full bg-fast-500 px-4 py-2 text-sm font-semibold text-ink-900 shadow-kawaii hover:bg-fast-400 md:inline-flex"
+        >
+          Free consult
+        </a>
       </div>
     </header>
 
-    <!-- Main -->
-    <main class="flex-1">
+    <main class="relative z-10">
       <!-- HERO -->
-      <section class="relative overflow-hidden">
-        <!-- Big background shapes -->
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute -top-32 -left-20 h-72 w-72 rounded-full bg-brand-500/15 blur-3xl"></div>
-          <div class="absolute -bottom-40 -right-20 h-80 w-80 rounded-full bg-calm-500/18 blur-3xl"></div>
-          <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+      <section class="mx-auto max-w-6xl px-4 py-12 md:flex md:items-center md:gap-10 md:px-6 md:py-16">
+        <div class="md:w-1/2">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-ink-800/80 px-3 py-1 text-xs text-white/80">
+            <span class="text-lg">✨</span>
+            Training for humans who move fast, slow, and everything in between.
+          </div>
+          <h1 class="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+            Train <span class="text-fast-400">fast</span>,
+            train <span class="text-slow-400">slow</span>, get ridiculously
+            <span class="bg-gradient-to-r from-fast-400 via-accent-pink to-slow-400 bg-clip-text text-transparent">
+              strong & steady.
+            </span>
+          </h1>
+          <p class="mt-4 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
+            Sprinters and marathoners both look incredible. The secret? They live at the
+            extremes. At <span class="font-semibold">Training Fast and Slow</span> we combine
+            explosive sprints, heavy slow lifts, long easy runs, and mobility work so you get
+            the best of both worlds—for your body <span class="font-semibold">and</span> your mind.
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href="#consult"
+              class="rounded-full bg-fast-500 px-5 py-2.5 text-sm font-semibold text-ink-900 shadow-kawaii hover:bg-fast-400"
+            >
+              Schedule a free consult
+            </a>
+            <a
+              href="#how"
+              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink-800/80 px-4 py-2 text-sm text-white/80 hover:border-fast-400/80"
+            >
+              <span>See fast vs slow plan</span>
+              <span class="text-lg">➜</span>
+            </a>
+          </div>
+
+          <p class="mt-4 text-xs text-white/60">
+            Welcoming humans in their 20s to 60s+. Custom programs that are playful, safe, and
+            ridiculously effective.
+          </p>
         </div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 relative">
-          <div class="grid lg:grid-cols-[1.1fr,0.9fr] gap-10 lg:gap-16 items-center">
-            <!-- Text Column -->
-            <div class="space-y-6">
-              <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-[0.7rem] font-medium text-slate-200">
-                <span class="flex items-center gap-1">
-                  <span class="h-4 w-4 rounded-full bg-brand-500/80 flex items-center justify-center text-[0.6rem]">🐇</span>
-                  Fast days
-                </span>
-                <span class="h-px w-6 bg-slate-600"></span>
-                <span class="flex items-center gap-1">
-                  <span class="h-4 w-4 rounded-full bg-calm-500/80 flex items-center justify-center text-[0.6rem]">🐢</span>
-                  Slow days
-                </span>
-                <span class="h-px w-6 bg-slate-600 hidden sm:inline"></span>
-                <span class="hidden sm:inline text-slate-400">Ages 20–60+</span>
-              </span>
-
-              <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
-                Personal training that
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-calm-400 to-brand-300">
-                  lives at the extremes
-                </span>
-                and stays safe for every age.
-              </h1>
-
-              <p class="text-sm sm:text-base text-slate-300 max-w-xl">
-                Sprinter days. Marathon days. Custom, age-appropriate programs that are gentle on joints,
-                tough on excuses, and built for real life in your 20s, 40s, or 60s.
-              </p>
-
-              <!-- Age "track" -->
-              <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-3 sm:p-4">
-                <div class="flex items-center justify-between gap-2 mb-3 text-[0.7rem] text-slate-400">
-                  <span class="uppercase tracking-[0.22em] text-slate-500">Who we work with</span>
-                  <span class="flex items-center gap-1 text-slate-500">
-                    🐇
-                    <span class="h-px w-10 bg-gradient-to-r from-brand-500 via-slate-500 to-calm-500"></span>
-                    🐢
-                  </span>
-                </div>
-                <div class="grid grid-cols-3 gap-2 text-[0.7rem] sm:text-xs">
-                  <div class="rounded-xl bg-slate-900/80 border border-brand-500/40 p-2.5 flex flex-col gap-1">
-                    <p class="font-semibold text-slate-50">20s–30s</p>
-                    <p class="text-slate-400">“I should probably get in shape again.”</p>
-                  </div>
-                  <div class="rounded-xl bg-slate-900/80 border border-slate-700 p-2.5 flex flex-col gap-1">
-                    <p class="font-semibold text-slate-50">30s–40s</p>
-                    <p class="text-slate-400">Stress, kids, work, knees— we make it doable.</p>
-                  </div>
-                  <div class="rounded-xl bg-slate-900/80 border border-calm-500/40 p-2.5 flex flex-col gap-1">
-                    <p class="font-semibold text-slate-50">50s–60s+</p>
-                    <p class="text-slate-400">Train safely, stay strong, move confidently.</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Fast / Slow mini tiles -->
-              <div class="grid grid-cols-2 gap-3 text-xs sm:text-sm">
-                <div class="rounded-2xl border border-brand-600/60 bg-gradient-to-br from-brand-500/10 via-slate-950 to-slate-950 p-3">
-                  <p class="font-semibold flex items-center gap-1 mb-1 text-brand-100">
-                    <span>⚡</span> Fast days
-                  </p>
-                  <ul class="space-y-1 text-slate-200">
-                    <li>Short sprints (scaled)</li>
-                    <li>Explosive lifts (safe progressions)</li>
-                    <li>Jumps & power work (if appropriate)</li>
-                  </ul>
-                </div>
-                <div class="rounded-2xl border border-calm-500/60 bg-gradient-to-br from-calm-500/10 via-slate-950 to-slate-950 p-3">
-                  <p class="font-semibold flex items-center gap-1 mb-1 text-calm-100">
-                    <span>🐢</span> Slow days
-                  </p>
-                  <ul class="space-y-1 text-slate-200">
-                    <li>Heavy, slow sets (your level)</li>
-                    <li>Long walks / runs / rows</li>
-                    <li>Mobility & joint-care sessions</li>
-                  </ul>
-                </div>
-              </div>
-
-              <p class="text-xs text-slate-400 max-w-lg">
-                We don’t force “young person workouts” on older bodies, or boring “senior” plans on people who want to push.
-                Everything is custom and safety-first.
-              </p>
-
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a href="#consult" class="inline-flex justify-center items-center px-5 py-2.5 rounded-full bg-brand-500 hover:bg-brand-400 text-sm font-semibold text-slate-950 shadow-lg shadow-brand-500/40 transition">
-                  Schedule a free consult
-                </a>
-                <a href="#spectrum" class="inline-flex justify-center items-center px-4 py-2 rounded-full border border-slate-700 text-sm text-slate-200 hover:border-brand-400 hover:text-brand-100 transition">
-                  See how the rabbit & turtle plan works
-                </a>
-              </div>
-            </div>
-
-            <!-- Visual Column -->
-            <div class="relative">
-              <!-- decorative squiggle band -->
-              <div class="absolute -top-8 right-6 left-0 h-4 bg-[repeating-linear-gradient(90deg,rgba(249,115,22,0.14)_0,rgba(249,115,22,0.14)_14px,transparent_14px,transparent_28px)] rounded-full opacity-70"></div>
-
-              <div class="relative rounded-[2rem] border border-slate-800 bg-slate-900/70 p-4 sm:p-5 shadow-xl shadow-black/40 overflow-hidden">
-                <!-- colored stripe -->
-                <div class="absolute -top-8 left-10 h-16 w-[130%] bg-gradient-to-r from-brand-500 via-brand-400 via-calm-400 to-calm-500 opacity-70 rotate-[-6deg]"></div>
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.7),_transparent_55%)] pointer-events-none"></div>
-
-                <div class="relative">
-                  <div class="flex items-center justify-between text-xs text-slate-300 mb-3">
-                    <div class="flex items-center gap-2">
-                      <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                      <span class="h-2 w-2 rounded-full bg-amber-400"></span>
-                      <span class="h-2 w-2 rounded-full bg-rose-500"></span>
-                      <span class="ml-2 font-mono text-[0.7rem] text-slate-400">week_plan.fast_slow</span>
-                    </div>
-                    <span class="hidden sm:inline text-slate-500">Sample week (scaled to you)</span>
-                  </div>
-
-                  <!-- Three-day cards -->
-                  <div class="space-y-3 text-[0.75rem] text-slate-200">
-                    <div class="flex items-center justify-between py-2.5 px-3 rounded-2xl bg-slate-950/85 border border-brand-500/60">
-                      <div class="flex items-center gap-2">
-                        <span class="text-lg">🐇</span>
-                        <div>
-                          <p class="font-semibold text-brand-100">Mon • Fast</p>
-                          <p class="text-slate-400 text-[0.7rem]">Sprints + explosive lifts (your speed, your weights)</p>
-                        </div>
-                      </div>
-                      <span class="text-[0.7rem] px-2 py-1 rounded-full bg-slate-900 border border-slate-700">20–40 min</span>
-                    </div>
-
-                    <div class="flex items-center justify-between py-2.5 px-3 rounded-2xl bg-slate-950/85 border border-calm-500/60">
-                      <div class="flex items-center gap-2">
-                        <span class="text-lg">🐢</span>
-                        <div>
-                          <p class="font-semibold text-calm-100">Wed • Slow</p>
-                          <p class="text-slate-400 text-[0.7rem]">Heavy squats + long row, with form-first coaching</p>
-                        </div>
-                      </div>
-                      <span class="text-[0.7rem] px-2 py-1 rounded-full bg-slate-900 border border-slate-700">45–60 min</span>
-                    </div>
-
-                    <div class="flex items-center justify-between py-2.5 px-3 rounded-2xl bg-slate-950/85 border border-slate-700/70">
-                      <div class="flex items-center gap-2">
-                        <span class="text-lg">🌿</span>
-                        <div>
-                          <p class="font-semibold text-slate-100">Fri • Find what you like</p>
-                          <p class="text-slate-400 text-[0.7rem]">
-                            We test what you actually enjoy. The more you like it, the more you’ll do it, and the faster you’ll improve.
-                          </p>
-                        </div>
-                      </div>
-                      <span class="text-[0.7rem] px-2 py-1 rounded-full bg-slate-900 border border-slate-700">
-                        find what sticks
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 pt-3 text-[0.7rem]">
-                    <span class="flex items-center gap-2 text-slate-400">
-                      <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      Train both ends of the spectrum → better results at any age.
-                    </span>
-                    <span class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300">
-                      🧠 phone-free focus mode
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- little legend card -->
-              <div class="mt-4 max-w-xs ml-auto rounded-2xl border border-slate-800 bg-slate-950/80 p-3 text-[0.7rem] space-y-1.5">
-                <p class="uppercase tracking-[0.2em] text-slate-500 flex items-center gap-2">
-                  <span class="h-1.5 w-6 bg-gradient-to-r from-brand-500 to-calm-500 rounded-full"></span>
-                  spectrum map
-                </p>
+        <!-- Hero illustration / rabbit vs turtle -->
+        <div class="mt-10 md:mt-0 md:w-1/2">
+          <div class="relative mx-auto max-w-md rounded-3xl bg-ink-800/80 p-5 shadow-kawaii ring-1 ring-white/10">
+            <div class="wave absolute inset-0 rounded-3xl"></div>
+            <div class="relative z-10 grid grid-cols-2 gap-3">
+              <!-- Fast card -->
+              <div class="rounded-2xl bg-gradient-to-br from-fast-500 to-accent-pink p-4 text-ink-900 shadow-kawaii">
                 <div class="flex items-center justify-between">
-                  <span class="flex items-center gap-1 text-slate-300">
-                    🐇 <span class="text-slate-400">= faster, sharper days</span>
-                  </span>
+                  <p class="text-xs font-semibold uppercase tracking-wide">Fast days</p>
+                  <span class="text-2xl">🐇</span>
                 </div>
+                <ul class="mt-3 space-y-1 text-xs">
+                  <li>• Sprints & hill runs</li>
+                  <li>• Explosive lifts</li>
+                  <li>• Jumps & sprint rows</li>
+                </ul>
+                <p class="mt-2 text-[11px] font-semibold">
+                  Nervous system ON. Power, speed, confidence.
+                </p>
+              </div>
+
+              <!-- Slow card -->
+              <div class="rounded-2xl bg-gradient-to-br from-slow-400 to-accent-purple p-4 text-ink-900 shadow-kawaii">
                 <div class="flex items-center justify-between">
-                  <span class="flex items-center gap-1 text-slate-300">
-                    🐢 <span class="text-slate-400">= slower, stronger days</span>
+                  <p class="text-xs font-semibold uppercase tracking-wide">Slow days</p>
+                  <span class="text-2xl">🐢</span>
+                </div>
+                <ul class="mt-3 space-y-1 text-xs">
+                  <li>• Heavy, controlled lifting</li>
+                  <li>• Long easy runs & rows</li>
+                  <li>• Mobility & breath</li>
+                </ul>
+                <p class="mt-2 text-[11px] font-semibold">
+                  Joints happy. Heart calm. Bones strong.
+                </p>
+              </div>
+
+              <!-- You card -->
+              <div class="col-span-2 rounded-2xl border border-white/15 bg-ink-900/80 p-4 text-xs text-white/85">
+                <div class="flex items-center justify-between">
+                  <p class="font-semibold">You, in the middle 🧠💪</p>
+                  <span class="rounded-full bg-accent-mint/20 px-2 py-0.5 text-[10px] text-accent-mint">
+                    Body & brain
                   </span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAST / SLOW SECTION -->
-      <section id="spectrum" class="relative border-t border-slate-900/80 bg-slate-950">
-        <!-- subtle diagonal background -->
-        <div class="pointer-events-none absolute inset-0 opacity-30">
-          <div class="absolute -top-32 right-[-40%] h-72 w-[80%] rotate-[-4deg] bg-[radial-gradient(circle_at_center,_rgba(15,23,42,0.9),_transparent_60%)]"></div>
-        </div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative">
-          <div class="grid lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-12 items-start">
-            <div class="space-y-4">
-              <h2 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight">
-                Why fast + slow beats “medium” workouts
-              </h2>
-              <p class="text-sm sm:text-base text-slate-300">
-                Sprinters and marathoners are both in incredible shape. Most people live in a vague “kinda hard” middle and stay stuck.
-              </p>
-              <p class="text-sm sm:text-base text-slate-300">
-                We train both extremes, in a way that’s safe and scaled for you — whether you’re 25, 45, or 65.
-              </p>
-              <ul class="space-y-2 text-sm text-slate-200">
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">⚡</span>
-                  <span>Fast days: more power, snap, and confidence moving quickly.</span>
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">💪</span>
-                  <span>Slow days: more strength, endurance, and “I can handle this” energy.</span>
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">🧠</span>
-                  <span>A calmer, more resilient nervous system overall.</span>
-                </li>
-              </ul>
-              <p class="text-xs text-slate-400">
-                Everything is custom: exercise choices, range of motion, and intensity are all adjusted for your joints, history, and goals.
-              </p>
-
-              <!-- little 2-color bar to show spectrum -->
-              <div class="mt-4 space-y-2">
-                <p class="text-[0.7rem] text-slate-500 uppercase tracking-[0.25em]">the fast / slow spectrum</p>
-                <div class="h-2 w-full rounded-full bg-gradient-to-r from-brand-500 via-slate-700 to-calm-500"></div>
-                <div class="flex justify-between text-[0.7rem] text-slate-400">
-                  <span class="flex items-center gap-1">🐇 Fast / explosive</span>
-                  <span class="flex items-center gap-1">🐢 Slow / steady</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Fast/Slow dual cards -->
-            <div class="space-y-4">
-              <div class="rounded-3xl border border-brand-600/70 bg-slate-950/90 p-4 relative overflow-hidden">
-                <div class="absolute -top-5 -right-3 h-16 w-16 rounded-full bg-brand-500/15 blur-xl"></div>
-                <p class="text-xs uppercase tracking-[0.2em] text-brand-300 mb-1 flex items-center gap-2">
-                  <span class="text-lg">🐇</span> Fast days
+                <p class="mt-2">
+                  Modern training lives in the “meh” middle. We ride the
+                  <span class="text-fast-300 font-semibold">fast</span> and
+                  <span class="text-slow-300 font-semibold">slow</span> edges so your results
+                  show up sooner—and stick.
                 </p>
-                <ul class="grid grid-cols-2 gap-2 text-xs sm:text-sm text-slate-200">
-                  <li>Track or hill sprints</li>
-                  <li>Row / bike sprints</li>
-                  <li>Explosive barbell work</li>
-                  <li>Jumps & throws (or low-impact options)</li>
-                  <li>Short power circuits</li>
-                  <li>Coordination drills</li>
-                </ul>
-              </div>
-
-              <div class="rounded-3xl border border-calm-500/70 bg-slate-950/90 p-4 relative overflow-hidden">
-                <div class="absolute -bottom-6 -left-4 h-16 w-16 rounded-full bg-calm-500/15 blur-xl"></div>
-                <p class="text-xs uppercase tracking-[0.2em] text-calm-300 mb-1 flex items-center gap-2">
-                  <span class="text-lg">🐢</span> Slow days
-                </p>
-                <ul class="grid grid-cols-2 gap-2 text-xs sm:text-sm text-slate-200">
-                  <li>Heavy squats / hinges (scaled)</li>
-                  <li>Slow tempo sets</li>
-                  <li>Long walks / runs</li>
-                  <li>Long rows / bikes</li>
-                  <li>Balance & stability work</li>
-                  <li>Mobility flows</li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- MIND + FUN -->
-      <section id="mind" class="relative border-t border-slate-900/80 bg-slate-950">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute top-8 left-4 h-24 w-24 rounded-full border border-dashed border-slate-800/80"></div>
-        </div>
+      <!-- HOW IT WORKS -->
+      <section id="how" class="border-t border-white/10 bg-ink-800/60">
+        <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
+          <h2 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+            How Training Fast & Slow actually works
+          </h2>
+          <p class="mt-2 max-w-2xl text-sm text-white/80">
+            Most programs live in the gray zone—too slow to build speed, too fast to build true
+            strength. We separate your training into clear fast and slow days, so each part of
+            you knows exactly what it’s supposed to do.
+          </p>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative">
-          <div class="grid lg:grid-cols-[1.05fr,0.95fr] gap-8 lg:gap-12 items-start">
-            <!-- Body + brain -->
-            <div class="space-y-4">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">
-                Body + brain
+          <div class="mt-8 grid gap-6 md:grid-cols-3">
+            <!-- Column 1: Fast -->
+            <div class="rounded-2xl bg-ink-900/80 p-5 shadow-kawaii ring-1 ring-fast-500/60">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-fast-300">Fast days 🐇</h3>
+                <span class="rounded-full bg-fast-500 px-2 py-0.5 text-[11px] font-semibold text-ink-900">
+                  Explode
+                </span>
+              </div>
+              <p class="mt-3 text-sm text-white/80">
+                Nervous system on, everything sharp. Short and spicy sessions that build power
+                and confidence.
               </p>
-              <h2 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight">
-                Training for overthinkers, late starters, and “it’s been a while” folks.
-              </h2>
-              <p class="text-sm sm:text-base text-slate-300">
-                If your brain is the thing that keeps you from showing up, we work with that, not against it.
-              </p>
-              <ul class="space-y-2 text-sm text-slate-200">
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">📲</span>
-                  <span>Reminders and simple check-ins if that helps you get to your sessions.</span>
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">🌞</span>
-                  <span>Walks or runs in the sun to start your day feeling awake and grounded.</span>
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">🚫📱</span>
-                  <span>Phone-free training if you’re easily distracted or want one hour of true focus.</span>
-                </li>
+              <ul class="mt-4 space-y-2 text-sm text-white/85">
+                <li>• Sprints & tempo runs</li>
+                <li>• Jump work & plyometrics</li>
+                <li>• Fast, snappy lifting (light–moderate loads)</li>
+                <li>• Rowing or bike sprints</li>
               </ul>
             </div>
 
-            <!-- Fun/consistency -->
-            <div class="space-y-4">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">
-                Fun, or it doesn’t last
-              </p>
-              <h3 class="font-semibold text-lg text-slate-50">
-                The more you like it, the more you’ll do it. The more you do it, the more you improve.
-              </h3>
-              <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-3">
-                  <p class="font-semibold mb-1 flex items-center gap-1">
-                    <span>🎮</span> “Try things” days
-                  </p>
-                  <p class="text-slate-300">
-                    We experiment with different styles — circuits, strength focus, outdoor sessions — to see what actually feels good to you.
-                  </p>
-                </div>
-                <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-3">
-                  <p class="font-semibold mb-1 flex items-center gap-1">
-                    <span>🎯</span> You-shaped programs
-                  </p>
-                  <p class="text-slate-300">
-                    Once we find what you like, we lean into it and build progressions so you keep showing up and keep improving.
-                  </p>
-                </div>
+            <!-- Column 2: Slow -->
+            <div class="rounded-2xl bg-ink-900/80 p-5 shadow-kawaii ring-1 ring-slow-500/60">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-slow-300">Slow days 🐢</h3>
+                <span class="rounded-full bg-slow-400 px-2 py-0.5 text-[11px] font-semibold text-ink-900">
+                  Build
+                </span>
               </div>
-              <p class="text-xs text-slate-400">
-                Nothing is “too silly” or “too old” if it helps you move more and feel better.
+              <p class="mt-3 text-sm text-white/80">
+                Heavy, patient, deliberate. You move slower on purpose so your muscles, bones,
+                and joints get stronger and safer.
               </p>
+              <ul class="mt-4 space-y-2 text-sm text-white/85">
+                <li>• Heavy lifts that naturally move slowly</li>
+                <li>• Long runs or rows at a chatty pace</li>
+                <li>• Mobility, stretching, breathwork</li>
+                <li>• Technique drills & balance work</li>
+              </ul>
+            </div>
 
-              <!-- little comic strip -->
-              <div class="mt-3 grid grid-cols-3 gap-2 text-[0.7rem] text-slate-300">
-                <div class="rounded-xl border border-slate-800 bg-slate-950/80 p-2 flex flex-col gap-1">
-                  <span class="text-slate-400">Step 1</span>
-                  <span>Show up (even tired, anxious, rusty).</span>
-                </div>
-                <div class="rounded-xl border border-slate-800 bg-slate-950/80 p-2 flex flex-col gap-1">
-                  <span class="text-slate-400">Step 2</span>
-                  <span>We test what your brain + body vibe with.</span>
-                </div>
-                <div class="rounded-xl border border-slate-800 bg-slate-950/80 p-2 flex flex-col gap-1">
-                  <span class="text-slate-400">Step 3</span>
-                  <span>We do more of that on purpose, safely.</span>
-                </div>
+            <!-- Column 3: You -->
+            <div class="rounded-2xl bg-ink-900/80 p-5 shadow-kawaii ring-1 ring-white/15">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold text-white">Your program 🎯</h3>
+                <span class="rounded-full bg-accent-purple/30 px-2 py-0.5 text-[11px] font-semibold text-accent-purple">
+                  Custom
+                </span>
               </div>
+              <p class="mt-3 text-sm text-white/80">
+                You’re not a template. We blend fast and slow based on your joints, schedule,
+                and brain—not the internet’s.
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-white/85">
+                <li>• 1:1 assessment of injuries, goals, and energy</li>
+                <li>• Clear “fast” and “slow” days on your calendar</li>
+                <li>• Progress that feels challenging but safe</li>
+                <li>• Adjustments every week as life happens</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- COACHING -->
-      <section id="coaching" class="relative border-t border-slate-900/80 bg-slate-950">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute -bottom-20 right-10 h-40 w-40 rounded-full bg-slate-900/60 border border-slate-800"></div>
-        </div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative">
-          <div class="grid lg:grid-cols-[1.2fr,1fr] gap-8 lg:gap-12 items-start">
-            <div class="space-y-4">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">
-                People, not drill sergeants
-              </p>
-              <h2 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight">
-                Our trainers can coach lifts <span class="text-slate-300">and</span> support humans in their 20s, 40s, and 60s.
+      <!-- BODY + BRAIN -->
+      <section id="mental" class="border-t border-white/10 bg-ink-900/80">
+        <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
+          <div class="md:flex md:items-start md:gap-10">
+            <div class="md:w-1/2">
+              <h2 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Training for your body <span class="text-fast-400">&</span> your brain
               </h2>
-              <p class="text-sm sm:text-base text-slate-300">
-                We don’t hire “just vibes” coaches or “just science” coaches. You get both: smart programming and real human connection.
+              <p class="mt-2 text-sm text-white/80">
+                Whether your brain is keeping you from showing up or you’re chasing an extra
+                mental edge, we train the human, not just the muscles.
               </p>
-              <ul class="space-y-2 text-sm text-slate-200">
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">📚</span>
-                  <span>Solid programming from fast to slow days, adjusted for your age and experience.</span>
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">🗣️</span>
-                  <span>Real talk, encouragement, and listening — not yelling for social media clips.</span>
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-0.5 text-xs">🧭</span>
-                  <span>Sessions adjusted for energy, soreness, injuries, and life stress so you can train safely and consistently.</span>
-                </li>
-              </ul>
 
-              <!-- Coach types chips -->
-              <div class="mt-4 flex flex-wrap gap-2 text-[0.7rem]">
-                <span class="px-2.5 py-1 rounded-full border border-brand-500/60 bg-brand-500/10 text-brand-100">
-                  Beginner-friendly
-                </span>
-                <span class="px-2.5 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-slate-200">
-                  Ex-athletes welcome
-                </span>
-                <span class="px-2.5 py-1 rounded-full border border-calm-500/60 bg-calm-500/10 text-calm-100">
-                  Aging well focus
-                </span>
-              </div>
-            </div>
-
-            <div class="rounded-3xl border border-slate-800 bg-slate-950/90 p-4 sm:p-5 relative overflow-hidden">
-              <div class="absolute -top-10 -right-6 h-20 w-20 rounded-full bg-brand-500/18 blur-xl"></div>
-              <div class="absolute -bottom-10 -left-4 h-20 w-20 rounded-full bg-calm-500/18 blur-xl"></div>
-
-              <div class="relative">
-                <div class="flex items-center gap-3 mb-3">
-                  <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-brand-500 to-calm-400 flex items-center justify-center text-2xl shadow-lg shadow-brand-500/40">
-                    💬
-                  </div>
+              <div class="mt-6 space-y-4 text-sm text-white/85">
+                <div class="flex gap-3">
+                  <span class="mt-0.5 text-lg">🔔</span>
                   <div>
-                    <p class="text-xs uppercase tracking-[0.2em] text-slate-500">
-                      Your coach
-                    </p>
-                    <p class="font-semibold text-sm text-slate-50">
-                      Not an app. An actual human.
+                    <p class="font-semibold">Accountability that actually fits you</p>
+                    <p class="text-white/75">
+                      Prefer reminders? We’ll send them. Hate nagging? We won’t. We work with
+                      your brain, not against it.
                     </p>
                   </div>
                 </div>
-                <ul class="space-y-1.5 text-xs text-slate-300 mb-3">
-                  <li class="flex gap-2">
-                    <span class="mt-0.5">✔️</span>
-                    <span>Form checks and cues every session</span>
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="mt-0.5">✔️</span>
-                    <span>Clear weekly rabbit & turtle plan</span>
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="mt-0.5">✔️</span>
-                    <span>Accountability that matches your brain and your life stage</span>
-                  </li>
-                </ul>
-                <p class="text-[0.7rem] text-slate-500 mb-2">
-                  We work with beginners, returning athletes, and people who want to stay strong and safe as they age.
+                <div class="flex gap-3">
+                  <span class="mt-0.5 text-lg">🌞</span>
+                  <div>
+                    <p class="font-semibold">Sun, movement, and better mornings</p>
+                    <p class="text-white/75">
+                      If morning runs in the sun help you wake up and lift your mood, we’ll
+                      build them in. If evenings feel safer, we go there instead.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <span class="mt-0.5 text-lg">📵</span>
+                  <div>
+                    <p class="font-semibold">Phone-free training time</p>
+                    <p class="text-white/75">
+                      If you’re easily distracted, both you and your trainer put phones away
+                      and focus on the weight in front of you. 60 minutes of being fully
+                      present.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cute checklist card -->
+            <div class="mt-8 md:mt-0 md:w-1/2">
+              <div class="rounded-3xl bg-ink-800/90 p-5 shadow-kawaii ring-1 ring-white/15">
+                <p class="text-xs font-semibold uppercase tracking-wide text-white/60">
+                  Is this you?
                 </p>
-                <a href="#consult" class="mt-1 inline-flex justify-center items-center w-full px-4 py-2.5 rounded-full bg-slate-100 text-slate-950 text-sm font-semibold hover:bg-white transition">
-                  See if we’re a fit (free)
-                </a>
+                <ul class="mt-4 space-y-3 text-sm text-white/85">
+                  <li>☑ Overthinker who needs clear plans, not chaos</li>
+                  <li>☑ Ex-athlete who wants to feel powerful without breaking</li>
+                  <li>☑ Desk goblin who wants to touch grass and feel human again</li>
+                  <li>☑ Parent, student, or professional with exactly 0 time to waste</li>
+                  <li>☑ In your 20s–60s+ wanting results without wrecking your joints</li>
+                </ul>
+                <p class="mt-4 text-xs text-white/65">
+                  Your trainer will meet you where you are today and walk with you to where you
+                  want to be—fast some days, slow other days, always on your side.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CONSULT / CONTACT -->
-      <section id="consult" class="relative border-t border-slate-900/80 bg-slate-950">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-40 bg-gradient-to-r from-transparent via-brand-500/60 to-transparent"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative">
-          <div class="max-w-2xl mx-auto text-center mb-6">
-            <h2 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight mb-2">
-              Start with a free consult
-            </h2>
-            <p class="text-sm sm:text-base text-slate-300">
-              Tell us your age, goals, and history. We’ll sketch a safe, effective fast & slow plan built just for you.
-            </p>
+      <!-- FUN FIRST -->
+      <section id="fun" class="border-t border-white/10 bg-ink-800/80">
+        <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
+          <div class="flex items-center justify-between gap-6">
+            <div>
+              <h2 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Fun on purpose, so you keep showing up
+              </h2>
+              <p class="mt-2 max-w-2xl text-sm text-white/80">
+                We’ll think way outside the box with you. The more you enjoy something, the more
+                you do it. The more you do it, the better you get.
+              </p>
+            </div>
           </div>
 
-          <div class="rounded-3xl border border-slate-800 bg-slate-950/90 p-4 sm:p-6 shadow-xl shadow-black/40">
-            <!-- Replace YOUR_FORMSPREE_ID with your actual endpoint from formspree.io or any form service -->
-            <form class="space-y-4" method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_ID">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="space-y-1.5">
-                  <label for="name" class="text-xs font-medium text-slate-200">Name</label>
+          <div class="mt-8 grid gap-5 md:grid-cols-3">
+            <div class="rounded-2xl bg-ink-900/80 p-4 shadow-kawaii ring-1 ring-accent-pink/60">
+              <p class="text-sm font-semibold text-accent-pink">Playful fast</p>
+              <p class="mt-2 text-sm text-white/80">
+                Timed cone sprints, relay-style rowing, “beat your last score” power sessions
+                that feel more like games than punishment.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-ink-900/80 p-4 shadow-kawaii ring-1 ring-accent-mint/60">
+              <p class="text-sm font-semibold text-accent-mint">Cozy slow</p>
+              <p class="mt-2 text-sm text-white/80">
+                Slow strength circuits, playlists you actually like, mobility flows that make
+                your joints sigh with relief instead of dread.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-ink-900/80 p-4 shadow-kawaii ring-1 ring-accent-purple/60">
+              <p class="text-sm font-semibold text-accent-purple">Your weird ideas welcome</p>
+              <p class="mt-2 text-sm text-white/80">
+                Want to train in a park? Mix in kettlebells and long walks? Try “recess” style
+                circuits? Nothing reasonable is off the table.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO WE TRAIN -->
+      <section id="for-who" class="border-t border-white/10 bg-ink-900/90">
+        <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
+          <h2 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+            Safe, creative training for every age & stage
+          </h2>
+          <p class="mt-2 max-w-2xl text-sm text-white/80">
+            Whether you’re starting from the couch, rebuilding after injury, or chasing a new
+            personal best, we tailor the intensity and the play to your body.
+          </p>
+
+          <div class="mt-8 grid gap-5 md:grid-cols-3">
+            <div class="rounded-2xl bg-ink-800/80 p-5 shadow-kawaii ring-1 ring-white/15">
+              <p class="text-xs font-semibold uppercase tracking-wide text-fast-300">
+                20s & 30s
+              </p>
+              <p class="mt-2 text-sm font-semibold">Build power without burning out</p>
+              <p class="mt-2 text-sm text-white/80">
+                Work, life, and stress are already full speed. We help you use fast days to feel
+                alive, and slow days to buffer your body from all that chaos.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-ink-800/80 p-5 shadow-kawaii ring-1 ring-white/15">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slow-300">
+                40s & 50s
+              </p>
+              <p class="mt-2 text-sm font-semibold">Strong, mobile, and hard to knock over</p>
+              <p class="mt-2 text-sm text-white/80">
+                We protect joints, build muscle, and keep speed in the mix so you can keep up
+                with kids, grandkids, careers, and adventures.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-ink-800/80 p-5 shadow-kawaii ring-1 ring-white/15">
+              <p class="text-xs font-semibold uppercase tracking-wide text-accent-mint">
+                60s and beyond
+              </p>
+              <p class="mt-2 text-sm font-semibold">Safe, steady, and still playful</p>
+              <p class="mt-2 text-sm text-white/80">
+                Slow strength, balance work, gentle fast challenges when appropriate. We move at
+                the right speed for you, not anyone else.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAINERS -->
+      <section id="trainers" class="border-t border-white/10 bg-ink-800/90">
+        <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
+          <div class="md:flex md:items-end md:justify-between">
+            <div>
+              <h2 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Trainers who are great at people <span class="text-fast-400">&</span> programs
+              </h2>
+              <p class="mt-2 max-w-2xl text-sm text-white/80">
+                Some trainers are brilliant at exercise science but awkward with humans. Others
+                are warm and friendly but write “meh” programs. We only hire coaches who are
+                excellent at both.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 grid gap-6 md:grid-cols-3">
+            <!-- Trainer 1 -->
+            <div class="flex flex-col rounded-2xl bg-ink-900/90 p-5 shadow-kawaii ring-1 ring-white/15">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-fast-500/90 text-2xl text-ink-900">
+                  🐇
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">The Fast Brain Coach</p>
+                  <p class="text-xs text-white/60">Explosive days, clear plans</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm text-white/80">
+                Specializes in power training, sprint work, and helping anxious brains feel safe
+                pushing hard—and resting hard.
+              </p>
+            </div>
+
+            <!-- Trainer 2 -->
+            <div class="flex flex-col rounded-2xl bg-ink-900/90 p-5 shadow-kawaii ring-1 ring-white/15">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-slow-400/90 text-2xl text-ink-900">
+                  🐢
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">The Slow Strength Coach</p>
+                  <p class="text-xs text-white/60">Heavy, safe, steady</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm text-white/80">
+                Obsessed with joint health, bone density, and technique. Great for beginners,
+                return-to-training folks, and cautious lifters.
+              </p>
+            </div>
+
+            <!-- Trainer 3 -->
+            <div class="flex flex-col rounded-2xl bg-ink-900/90 p-5 shadow-kawaii ring-1 ring-white/15">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-purple/90 text-2xl text-ink-900">
+                  🧠
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">The Body + Mind Coach</p>
+                  <p class="text-xs text-white/60">Motivation & mood aware</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm text-white/80">
+                Loves building routines that protect mental health: sleep-friendly sessions,
+                realistic schedules, and gentle, honest check-ins.
+              </p>
+            </div>
+          </div>
+
+          <p class="mt-6 text-xs text-white/60">
+            During your free consult, we’ll match you with the coach whose style and schedule fit
+            you best.
+          </p>
+        </div>
+      </section>
+
+      <!-- CONSULT / CONTACT FORM -->
+      <section id="consult" class="border-t border-white/10 bg-ink-900/95">
+        <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+          <div class="md:flex md:items-start md:gap-10">
+            <div class="md:w-1/2">
+              <h2 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Schedule your free initial consult
+              </h2>
+              <p class="mt-2 text-sm text-white/80">
+                Tell us where you’re starting, what you care about, and how fast or slow you
+                like to move. We’ll do the nerdy planning and support you all the way through.
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-white/80">
+                <li>• 20–30 minute video or phone call</li>
+                <li>• No pressure, no sales script, just real conversation</li>
+                <li>• We’ll sketch out a first 4–6 week plan together</li>
+              </ul>
+              <p class="mt-4 text-xs text-white/60">
+                Prefer email? Reach out at
+                <a href="mailto:hello@trainingfastandslow.com" class="text-fast-300 underline">
+                  hello@trainingfastandslow.com
+                </a>
+                and we’ll reply within 1–2 business days.
+              </p>
+            </div>
+
+            <!-- Form -->
+            <div class="mt-8 md:mt-0 md:w-1/2">
+              <form
+                class="space-y-4 rounded-3xl bg-ink-800/95 p-5 shadow-kawaii ring-1 ring-white/15"
+                action="https://formspree.io/f/your-form-id"
+                method="POST"
+              >
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-wide text-white/70">
+                    Name
+                  </label>
                   <input
-                    id="name"
-                    name="name"
                     type="text"
+                    name="name"
                     required
-                    class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/70 focus:border-transparent"
-                    placeholder="Rabbit / turtle in training"
+                    class="mt-1 w-full rounded-xl border border-white/15 bg-ink-900/70 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:border-fast-400 focus:outline-none"
+                    placeholder="Your name"
                   />
                 </div>
-                <div class="space-y-1.5">
-                  <label for="email" class="text-xs font-medium text-slate-200">Email</label>
+
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-wide text-white/70">
+                    Email
+                  </label>
                   <input
-                    id="email"
-                    name="email"
                     type="email"
+                    name="email"
                     required
-                    class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/70 focus:border-transparent"
+                    class="mt-1 w-full rounded-xl border border-white/15 bg-ink-900/70 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:border-fast-400 focus:outline-none"
                     placeholder="you@example.com"
                   />
                 </div>
-              </div>
 
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="space-y-1.5">
-                  <label for="age" class="text-xs font-medium text-slate-200">Age</label>
-                  <input
-                    id="age"
-                    name="age"
-                    type="number"
-                    min="18"
-                    max="90"
-                    class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/70 focus:border-transparent"
-                    placeholder="27, 43, 61..."
-                  />
-                </div>
-                <div class="space-y-1.5">
-                  <label for="experience" class="text-xs font-medium text-slate-200">Training experience</label>
-                  <select
-                    id="experience"
-                    name="experience"
-                    class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500/70 focus:border-transparent"
-                  >
-                    <option value="">Select one</option>
-                    <option value="new">New to training</option>
-                    <option value="returning">Returning after a long break</option>
-                    <option value="consistent">Consistent but stuck</option>
-                    <option value="athletic">Athletic / advanced</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="space-y-1.5">
-                <label for="goals" class="text-xs font-medium text-slate-200">What do you want out of this?</label>
-                <textarea
-                  id="goals"
-                  name="goals"
-                  rows="3"
-                  class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/70 focus:border-transparent"
-                  placeholder="Get in shape, feel safer on stairs, play with grandkids, run a 5K, feel strong again, etc."
-                ></textarea>
-              </div>
-
-              <div class="space-y-1.5">
-                <span class="text-xs font-medium text-slate-200">
-                  Which end feels hardest right now?
-                </span>
-                <div class="grid sm:grid-cols-3 gap-2 text-xs">
-                  <label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 cursor-pointer hover:border-brand-400">
-                    <input type="radio" name="spectrum_preference" value="fast" class="h-3 w-3" />
-                    <span>Fast stuff (sprints, jumps)</span>
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-wide text-white/70">
+                    What are you hoping to work on?
                   </label>
-                  <label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 cursor-pointer hover:border-brand-400">
-                    <input type="radio" name="spectrum_preference" value="slow" class="h-3 w-3" />
-                    <span>Slow stuff (heavy, long)</span>
-                  </label>
-                  <label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 cursor-pointer hover:border-brand-400">
-                    <input type="radio" name="spectrum_preference" value="both" class="h-3 w-3" />
-                    <span>Both ends are chaos</span>
-                  </label>
+                  <textarea
+                    name="goals"
+                    rows="3"
+                    class="mt-1 w-full rounded-xl border border-white/15 bg-ink-900/70 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:border-fast-400 focus:outline-none"
+                    placeholder="Ex: get strong safely, feel less anxious, run again without pain, etc."
+                  ></textarea>
                 </div>
-              </div>
 
-              <div class="space-y-1.5">
-                <label for="brain" class="text-xs font-medium text-slate-200">
-                  Anything about your brain or body we should know?
-                </label>
-                <textarea
-                  id="brain"
-                  name="brain"
-                  rows="3"
-                  class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/70 focus:border-transparent"
-                  placeholder="Old injuries, worries, anxiety, ADHD tendencies, “I always ghost programs after 2 weeks”, etc."
-                ></textarea>
-              </div>
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-wide text-white/70">
+                    What pace feels most like you right now?
+                  </label>
+                  <div class="mt-2 grid gap-2 sm:grid-cols-3">
+                    <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-white/20 bg-ink-900/70 px-3 py-2 text-xs hover:border-fast-400/80">
+                      <input type="radio" name="pace" value="fast" class="accent-fast-500" />
+                      <span>Mostly fast 🐇</span>
+                    </label>
+                    <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-white/20 bg-ink-900/70 px-3 py-2 text-xs hover:border-slow-400/80">
+                      <input type="radio" name="pace" value="slow" class="accent-slow-500" />
+                      <span>Mostly slow 🐢</span>
+                    </label>
+                    <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-white/20 bg-ink-900/70 px-3 py-2 text-xs hover:border-accent-purple/80">
+                      <input type="radio" name="pace" value="both" class="accent-accent-purple" />
+                      <span>Both please 🐇🐢</span>
+                    </label>
+                  </div>
+                </div>
 
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-wide text-white/70">
+                    Anything else we should know?
+                  </label>
+                  <textarea
+                    name="notes"
+                    rows="2"
+                    class="mt-1 w-full rounded-xl border border-white/15 bg-ink-900/70 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:border-fast-400 focus:outline-none"
+                    placeholder="Injuries, schedule, anxieties, special requests—nothing is too small."
+                  ></textarea>
+                </div>
+
                 <button
                   type="submit"
-                  class="inline-flex justify-center items-center px-6 py-2.5 rounded-full bg-brand-500 text-slate-950 text-sm font-semibold hover:bg-brand-400 transition shadow-lg shadow-brand-500/40"
+                  class="mt-2 w-full rounded-full bg-fast-500 px-4 py-2.5 text-sm font-semibold text-ink-900 shadow-kawaii hover:bg-fast-400"
                 >
-                  Submit & request consult
+                  Send my consult request
                 </button>
-                <p class="text-[0.7rem] text-slate-500">
-                  Prefer email?
-                  <a href="mailto:info@trainingfastandslow.com" class="underline underline-offset-2 text-slate-300">
-                    info@trainingfastandslow.com
-                  </a>
+
+                <p class="mt-2 text-[11px] text-white/50">
+                  By submitting, you’re just starting a conversation. No spam, no pressure.
                 </p>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-900 bg-slate-950">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-slate-500">
-        <p>© <span id="year"></span> Training Fast and Slow.</p>
-        <p class="flex items-center gap-2">
-          <span class="text-xs">🐇</span>
-          <span>Train fast. Train slow. Don’t train average.</span>
-          <span class="text-xs">🐢</span>
-        </p>
-      </div>
-    </footer>
+      <footer class="border-t border-white/10 bg-ink-900/95">
+        <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-white/55 md:flex-row md:items-center md:justify-between md:px-6">
+          <p>© <span id="year"></span> Training Fast and Slow. All rights reserved.</p>
+          <p class="flex items-center gap-2">
+            <span class="text-[13px]">🐇🐢</span>
+            <span>Sometimes very fast. Sometimes very slow. Always on your side.</span>
+          </p>
+        </div>
+      </footer>
+    </main>
   </div>
 
   <script>
+    // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
