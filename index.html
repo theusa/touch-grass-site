@@ -135,25 +135,73 @@
             </a>
           </div>
 
-          <!-- “Why work with us?” section now comes after the buttons -->
-          <div class="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base space-y-3">
-            <p><strong>Why us?</strong></p>
+                   <!-- WHY US - bold visual layout -->
+          <div class="mt-8 max-w-xl space-y-4">
+            <!-- Pill label -->
+            <div class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-1.5 text-[11px] font-medium text-slate-200 shadow-soft">
+              <span class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-fast-500 text-[10px]">⚡</span>
+              <span class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-slow-500 text-[10px]">🌊</span>
+              <span>Why Training Fast and Slow works</span>
+            </div>
 
-            <p>
-              The majority of modern training keeps you trapped at “medium”, leading to average results, physically and
-              mentally.
-            </p>
+            <!-- Main card -->
+            <div class="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-950/90 p-6 shadow-soft">
+              <!-- Title -->
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <h2 class="text-sm font-semibold tracking-tight text-slate-50 sm:text-base">
+                  Most training lives in the <span class="text-slate-300 italic">“meh”</span> middle.
+                </h2>
+                <div class="flex items-center gap-2 text-[11px] text-slate-400">
+                  <span class="flex items-center gap-1">
+                    <span class="h-1.5 w-4 rounded-full bg-fast-500"></span>
+                    <span>Fast</span>
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <span class="h-1.5 w-4 rounded-full bg-slate-500"></span>
+                    <span>Middle</span>
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <span class="h-1.5 w-4 rounded-full bg-slow-500"></span>
+                    <span>Slow</span>
+                  </span>
+                </div>
+              </div>
 
-            <p>
-              We follow the research and mirror how professional athletes train in a safe way: sometimes short and
-              intense, other days long and slow.
-            </p>
+              <!-- Visual comparison row -->
+              <div class="mt-5 grid gap-4 md:grid-cols-[1.1fr_auto_1.1fr] md:items-center">
+                <!-- Most programs (middle) -->
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+                  <div class="flex items-center justify-between text-[11px] font-medium text-slate-300">
+                    <span class="inline-flex items-center gap-1">
+                      😵‍💫
+                      <span>Most programs</span>
+                    </span>
+                    <span class="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-slate-400">stuck at medium</span>
+                  </div>
 
-            <p>
-              It is the safest, most effective way to change your body—whether you are just starting out or already
-              elite.
-            </p>
-          </div>
+                  <!-- Bar -->
+                  <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-800/90">
+                    <div class="flex h-full w-full">
+                      <div class="w-[15%] bg-fast-500/40"></div>
+                      <div class="relative w-[70%] bg-slate-500">
+                        <div class="absolute inset-0 flex items-center justify-center text-[9px] font-semibold uppercase tracking-[0.14em] text-slate-950/70">
+                          meh zone
+                        </div>
+                      </div>
+                      <div class="w-[15%] bg-slow-500/40"></div>
+                    </div>
+                  </div>
+
+                  <p class="mt-3 text-[11px] leading-relaxed text-slate-400">
+                    Workouts that are always kind of hard, kind of easy. Enough to get tired, not enough to truly build
+                    power or a real engine.
+                  </p>
+                </div>
+
+                <!-- VS badge -->
+                <div class="flex justify-center md:justify-center">
+                  <div class="inline-flex
+
 
 
           <!-- age-inclusive chips -->
@@ -181,66 +229,7 @@
           </div>
         </div>
 
-        <!-- Right: visual card -->
-        <div class="relative">
-          <div class="absolute -right-10 -top-6 hidden h-28 w-28 rounded-full bg-fast-500/40 blur-3xl lg:block"></div>
-          <div class="absolute -left-8 -bottom-10 hidden h-32 w-32 rounded-full bg-slow-500/40 blur-3xl lg:block"></div>
-
-          <div class="relative rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-950/40 p-5 shadow-soft">
-            <!-- Split speed bar -->
-            <div class="flex items-center justify-between text-[11px] text-slate-400">
-              <span>Today’s focus</span>
-              <span class="font-mono text-slate-300">fast ⇄ slow</span>
-            </div>
-
-            <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-800/80">
-              <div class="flex h-full w-full">
-                <div class="w-[48%] bg-fast-500/90"></div>
-                <div class="w-[4%] bg-slate-900"></div>
-                <div class="w-[48%] bg-slow-500/90"></div>
-              </div>
-            </div>
-
-            <div class="mt-6 grid gap-4 sm:grid-cols-2">
-              <!-- Fast block -->
-              <div class="rounded-2xl border border-fast-500/40 bg-fast-500/5 p-4">
-                <div class="flex items-center justify-between text-[11px] font-medium text-fast-100">
-                  <span class="inline-flex items-center gap-1">
-                    ⚡ Fast session
-                  </span>
-                  <span class="rounded-full bg-slate-950/60 px-2 py-0.5 text-[10px] text-slate-200">30–40 min</span>
-                </div>
-                <ul class="mt-3 space-y-1.5 text-[12px] text-slate-100">
-                  <li>• Warm-up &amp; prep</li>
-                  <li>• 6 × short sprints</li>
-                  <li>• Explosive squats or presses</li>
-                  <li>• Power-focused core work</li>
-                </ul>
-              </div>
-
-              <!-- Slow block -->
-              <div class="rounded-2xl border border-slow-500/40 bg-slow-500/5 p-4">
-                <div class="flex items-center justify-between text-[11px] font-medium text-slow-100">
-                  <span class="inline-flex items-center gap-1">
-                    🌊 Slow session
-                  </span>
-                  <span class="rounded-full bg-slate-950/60 px-2 py-0.5 text-[10px] text-slate-200">45–60+ min</span>
-                </div>
-                <ul class="mt-3 space-y-1.5 text-[12px] text-slate-100">
-                  <li>• Heavy lifts (slow by nature)</li>
-                  <li>• Easy long run or row</li>
-                  <li>• Mobility &amp; position work</li>
-                  <li>• Downshift &amp; breath work</li>
-                </ul>
-              </div>
-            </div>
-
-            <p class="mt-5 text-[11px] leading-relaxed text-slate-400">
-              Your week alternates between very fast and very slow days. No more living in the “kinda hard, kinda easy”
-              middle zone that burns you out without making you better.
-            </p>
-          </div>
-        </div>
+      
       </section>
 
       <!-- WHY IT WORKS -->
