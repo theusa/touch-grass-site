@@ -506,50 +506,89 @@
             </p>
           </div>
 
-          <div class="grid w-full max-w-xl gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-              <div class="text-xs font-semibold uppercase tracking-[0.16em] text-fast-200">
-                Fast movers
-              </div>
-              <p class="mt-1 text-[11px] text-slate-400">
-                Sprinters, jumpers, explosive athletes.
-              </p>
-              <ul class="mt-3 space-y-1.5 text-[12px] text-slate-100">
-                <li>• High power &amp; strength</li>
-                <li>• Reactive, elastic tissues</li>
-                <li>• Nervous system that can “turn on” fast</li>
-              </ul>
-            </div>
+         <div class="w-full max-w-xl">
+  <div class="rounded-3xl border border-slate-800 bg-slate-950/80 p-4 sm:p-5 shadow-soft">
+    <div class="flex items-center justify-between text-[11px] font-medium text-slate-300 mb-4">
+      <span class="uppercase tracking-[0.16em]">Most programs vs Fast &amp; Slow</span>
+      <span class="text-slate-500">Same time, different signal</span>
+    </div>
 
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-              <div class="text-xs font-semibold uppercase tracking-[0.16em] text-slow-200">
-                Slow movers
-              </div>
-              <p class="mt-1 text-[11px] text-slate-400">
-                Marathoners, rowers, long-distance grinders.
-              </p>
-              <ul class="mt-3 space-y-1.5 text-[12px] text-slate-100">
-                <li>• Huge engine &amp; work capacity</li>
-                <li>• Heart &amp; lungs that last</li>
-                <li>• Strong recovery &amp; durability</li>
-              </ul>
-            </div>
-
-            <div class="sm:col-span-2 rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
-              <div class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
-                Most training programs
-              </div>
-              <p class="mt-2 text-[12px] leading-relaxed text-slate-300">
-                A bit too fast to recover easily. Not fast enough to build power.
-                Kind of long, but not long enough to build a real engine.
-              </p>
-              <p class="mt-2 text-[11px] text-slate-400">
-                Result: tired, sore, and stuck at the same level.
-                We avoid that by living at the edges—and cycling between them.
-              </p>
-            </div>
-          </div>
+    <div class="space-y-5 rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+      <!-- Most programs track -->
+      <div>
+        <div class="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
+          <span class="inline-flex items-center gap-1">
+            😵‍💫
+            <span class="uppercase tracking-[0.16em] text-slate-300">Most programs</span>
+          </span>
+          <span>always kind of the same</span>
         </div>
+        <div class="relative h-16 w-full">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 320 70" preserveAspectRatio="none">
+            <line x1="0" y1="35" x2="320" y2="35" stroke="#020617" stroke-width="2" />
+            <!-- wiggly middle-ish line -->
+            <path
+              d="M0 30 Q 40 42 80 32 T 160 38 T 240 30 T 320 37"
+              fill="none"
+              stroke="#9ca3af"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Fast & Slow track -->
+      <div>
+        <div class="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
+          <span class="inline-flex items-center gap-1">
+            ⚡🌊
+            <span class="uppercase tracking-[0.16em] text-slate-300">Training Fast &amp; Slow</span>
+          </span>
+          <span>clear spikes and deep valleys</span>
+        </div>
+        <div class="relative h-24 w-full">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 320 90" preserveAspectRatio="none">
+            <line x1="0" y1="45" x2="320" y2="45" stroke="#020617" stroke-width="2" />
+            <!-- slow base -->
+            <path
+              d="M0 45 Q 25 52 50 45 T 100 45 T 150 45 T 200 45 T 250 45 T 300 45"
+              fill="none"
+              stroke="#06b6d4"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <!-- fast spikes -->
+            <path
+              d="M30 45 L40 8 L50 45
+                 M130 45 L140 10 L150 45
+                 M230 45 L240 12 L250 45"
+              fill="none"
+              stroke="#f97316"
+              stroke-width="3.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="grid gap-3 text-[11px] text-slate-300 sm:grid-cols-3">
+        <div class="flex items-center gap-2">
+          <span class="h-1.5 w-6 rounded-full bg-slate-500/90"></span>
+          <span>Flat, noisy signal → your body stops adapting.</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="h-1.5 w-6 rounded-full bg-fast-500/90"></span>
+          <span>Spikes: true high intensity that actually changes you.</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="h-1.5 w-6 rounded-full bg-slow-500/90"></span>
+          <span>Valleys: long / heavy work where capacity grows.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       </section>
 
       <!-- HOW WE TRAIN -->
