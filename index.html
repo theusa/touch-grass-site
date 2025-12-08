@@ -55,7 +55,17 @@
     html {
       scroll-behavior: smooth;
     }
+
+    /* Offset anchor scrolling so sticky header doesn't cover titles */
+    #top,
+    #mobile-infographic,
+    #why,
+    #how,
+    #contact {
+      scroll-margin-top: 5.5rem; /* tweak to 5rem–6rem if you want it higher/lower */
+    }
   </style>
+
 </head>
 <body class="bg-slate-950 text-slate-50 font-sans antialiased">
   <div class="min-h-screen">
