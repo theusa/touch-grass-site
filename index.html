@@ -52,17 +52,21 @@
     };
   </script>
   <style>
-   html {
+  html {
   scroll-behavior: smooth;
 }
 
-/* Offset anchor scrolling so sticky header doesn't cover titles */
+/* General sections: stop a bit below the sticky header */
 #top,
 #mobile-infographic,
 #why,
-#how,
-#contact-form-block {
-  scroll-margin-top: 5.5rem; /* adjust slightly if needed */
+#how {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Contact section: scroll a bit further so the form shows */
+#contact {
+  scroll-margin-top: 3rem; /* you can tweak this: 2.5–3.5rem range */
 }
 
   </style>
@@ -95,7 +99,7 @@
 
           <!-- Free Consult: standout filled pill -->
           <a
-           href="#contact-form-block"
+           href="#contact"
             class="rounded-full bg-grass-400 px-4 py-1.5 text-xs font-semibold text-slate-950 shadow-soft hover:bg-grass-500 transition-colors"
           >
             We Will Work With You
@@ -103,7 +107,7 @@
 
           <!-- Email coach: contrasted outline pill -->
           <a
-            href="#contact-form-block"
+            href="#contact"
             class="rounded-full border border-grass-500/80 px-4 py-1.5 text-xs font-semibold text-grass-100 hover:bg-grass-500/10 hover:text-grass-50 transition-colors"
           >
             Free Consult
@@ -178,7 +182,7 @@
               See What We Actually Do
             </a>
             <a
-              href="#contact-form-block"
+              href="#contact"
               class="inline-flex items-center justify-center rounded-full bg-fast-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-soft hover:bg-fast-600 transition-colors"
             >
               Free Consult - We will work with you
