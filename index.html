@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Training Fast and Slow | Personal Training</title>
+  <title>Touch Grass Fitness | Personal Training</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Training Fast and Slow is personal training built on the full spectrum of speed: very fast and very slow. Sprints + heavy lifts. Explosiveness + long, easy work."
+    content="Touch Grass Fitness is personal training built on the full spectrum of speed: very fast and very slow. Sprints + heavy lifts. Explosiveness + long, easy work."
   />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -32,6 +32,16 @@
               500: '#06b6d4',
               600: '#0891b2',
             },
+            grass: {
+              50: '#f4ffe7',
+              100: '#e4ffc0',
+              200: '#c6ff87',
+              300: '#9af84c',
+              400: '#6ee755',
+              500: '#4ade80',
+              600: '#22c55e',
+              700: '#15803d',
+            },
             ink: '#020617'
           },
           boxShadow: {
@@ -54,29 +64,28 @@
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#top" class="flex items-center gap-3">
           <div class="relative">
-            <!-- Fast circle -->
-            <div class="h-8 w-8 rounded-full bg-fast-500/90 blur-[1px]"></div>
-            <!-- Slow circle -->
-            <div class="absolute -right-3 -bottom-1 h-8 w-8 rounded-full bg-slow-500/90 blur-[1px]"></div>
+            <!-- Brand circles (now grass-colored) -->
+            <div class="h-8 w-8 rounded-full bg-grass-400/90 blur-[1px]"></div>
+            <div class="absolute -right-3 -bottom-1 h-8 w-8 rounded-full bg-grass-600/90 blur-[1px]"></div>
             <!-- Center icon -->
             <div class="absolute inset-1 rounded-full border border-white/60 bg-slate-950/80 flex items-center justify-center text-[10px] font-mono tracking-tight">
-              F⇄S
+              🌱
             </div>
           </div>
           <div class="flex flex-col leading-tight">
-            <span class="text-sm font-semibold tracking-tight">Training Fast and Slow</span>
+            <span class="text-sm font-semibold tracking-tight">Touch Grass Fitness</span>
             <span class="text-[11px] text-slate-400 uppercase tracking-[0.16em]">Personal Training</span>
           </div>
         </a>
 
         <div class="hidden items-center gap-6 text-sm text-slate-300 sm:flex">
-          <a href="#why" class="hover:text-fast-200 transition-colors">Why it works</a>
-          <a href="#how" class="hover:text-fast-200 transition-colors">Training Style</a>
+          <a href="#why" class="hover:text-grass-200 transition-colors">Why it works</a>
+          <a href="#how" class="hover:text-grass-200 transition-colors">Training Style</a>
 
           <!-- Free Consult: standout filled pill -->
           <a
             href="#contact"
-            class="rounded-full bg-slow-500 px-4 py-1.5 text-xs font-semibold text-slate-950 shadow-soft hover:bg-slow-600 transition-colors"
+            class="rounded-full bg-grass-400 px-4 py-1.5 text-xs font-semibold text-slate-950 shadow-soft hover:bg-grass-500 transition-colors"
           >
             We Will Work With You
           </a>
@@ -84,7 +93,7 @@
           <!-- Email coach: contrasted outline pill -->
           <a
             href="#contact"
-            class="rounded-full border border-fast-500/80 px-4 py-1.5 text-xs font-semibold text-fast-100 hover:bg-fast-500/10 hover:text-fast-50 transition-colors"
+            class="rounded-full border border-grass-500/80 px-4 py-1.5 text-xs font-semibold text-grass-100 hover:bg-grass-500/10 hover:text-grass-50 transition-colors"
           >
             Free Consult
           </a>
@@ -133,7 +142,7 @@
             </p>
           </div>
 
-                   <!-- Mobile: HOW ARE WE DIFFERENT pill above buttons -->
+          <!-- Mobile: HOW ARE WE DIFFERENT pill above buttons -->
           <a
             href="#mobile-infographic"
             class="mt-6 inline-flex lg:hidden items-center gap-3 rounded-full border border-slate-700 bg-slate-900/80 px-6 py-2.5 text-sm font-semibold text-slate-200 shadow-soft"
@@ -153,7 +162,7 @@
           <div class="mt-4 flex flex-wrap items-center gap-4">
             <a
               href="#how"
-              class="inline-flex items-center justify-center rounded-full bg-blue-400 px-5 py-2.5 text-sm font-semibold text-black shadow-soft hover:bg-blue-500 transition-colors"
+              class="inline-flex items-center justify-center rounded-full bg-grass-400 px-5 py-2.5 text-sm font-semibold text-black shadow-soft hover:bg-grass-500 transition-colors"
             >
               See What We Actually Do
             </a>
@@ -166,8 +175,7 @@
             </a>
           </div>
 
-
-                   <!-- MOBILE: WHY section moved above ages -->
+          <!-- MOBILE: WHY section moved above ages -->
           <div class="mt-8 space-y-6 lg:hidden">
             <!-- WHY US - bold visual layout (infographic target) -->
             <div class="mt-2 max-w-xl space-y-4" id="mobile-infographic">
@@ -190,8 +198,6 @@
                     </span>
                   </div>
                 </div>
-                <!-- (keep the rest of the infographic exactly as-is) -->
-
 
                 <!-- Pulse infographic -->
                 <div class="mt-5 rounded-2xl border border-slate-800 bg-slate-900/70 p-4 space-y-5">
@@ -609,7 +615,7 @@
           <!-- Right: HOW WE TRAIN -->
           <div id="how" class="max-w-md lg:justify-self-end">
             <h2 class="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-              What Training Fast and Slow actually looks like.
+              What Touch Grass Fitness actually looks like.
             </h2>
             <p class="mt-3 text-sm leading-relaxed text-slate-300">
              *Research on combining high-intensity efforts with longer, lower-intensity work shows faster progress in
@@ -667,7 +673,7 @@
             </p>
             <p class="mt-3 text-xs leading-relaxed text-slate-400">
               Prefer email? You can also reach out directly at
-              <a href="mailto:youremail@example.com" class="text-slow-200 underline-offset-2 hover:underline">
+              <a href="mailto:youremail@example.com" class="text-grass-200 underline-offset-2 hover:underline">
                 youremail@example.com
               </a>.
             </p>
@@ -759,7 +765,7 @@
       <!-- FOOTER -->
       <footer class="mt-16 border-t border-slate-800/80 pt-6 pb-4 text-[11px] text-slate-500">
         <div class="flex flex-wrap items-center justify-between gap-3">
-          <p>© <span id="year-span"></span> Training Fast and Slow. All rights reserved.</p>
+          <p>© <span id="year-span"></span> Touch Grass Fitness. All rights reserved.</p>
           <p class="flex items-center gap-2">
             <span class="inline-flex h-1.5 w-5 rounded-full bg-fast-500/90"></span>
             <span class="inline-flex h-1.5 w-5 rounded-full bg-slow-500/90"></span>
