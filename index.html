@@ -822,7 +822,7 @@
     </div>
 
     <!-- New required phone field -->
-    <div>
+       <div>
       <label for="phone" class="block text-xs font-medium text-slate-300">
         Phone number*
       </label>
@@ -831,10 +831,14 @@
         name="phone"
         type="tel"
         required
+        inputmode="tel"
+        pattern="^(\+?1[\s\.\-]?)?(\([2-9][0-9]{2}\)|[2-9][0-9]{2})[\s\.\-]?[0-9]{3}[\s\.\-]?[0-9]{4}$"
+        title="Please enter a valid US phone number (e.g. 512-555-1234 or (512) 555-1234)."
         class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
-        placeholder="(555) 555-5555"
+        placeholder="(512) 555-1234"
       />
     </div>
+
 
     <!-- Optional -->
     <div>
