@@ -786,94 +786,113 @@
           <!-- RIGHT: contact form (unchanged) -->
 <!-- RIGHT: contact form (unchanged) -->
 <div id="contact-form-block" class="rounded-3xl border border-slate-800 bg-slate-950/80 p-5 shadow-soft">
-            <!-- Replace YOUR_FORM_ID_HERE with your Formspree form ID -->
-            <form
-              id="contact-form"
-              action="https://formspree.io/f/xnnegagq"
-              method="POST"
-              class="space-y-4 text-sm"
-            >
-              <div>
-                <label for="name" class="block text-xs font-medium text-slate-300">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
-                  placeholder="Your name"
-                />
-              </div>
+  <!-- Keep your existing Formspree URL in the action attribute -->
+  <form
+    id="contact-form"
+    action="https://formspree.io/f/xnnegagq"
+    method="POST"
+    class="space-y-4 text-sm"
+  >
+    <div>
+      <label for="name" class="block text-xs font-medium text-slate-300">
+        Name*
+      </label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        required
+        class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
+        placeholder="Your name"
+      />
+    </div>
 
-              <div>
-                <label for="email" class="block text-xs font-medium text-slate-300">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
-                  placeholder="you@example.com"
-                />
-              </div>
+    <div>
+      <label for="email" class="block text-xs font-medium text-slate-300">
+        Email*
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
+        placeholder="you@example.com"
+      />
+    </div>
 
-              <div>
-                <label for="goals" class="block text-xs font-medium text-slate-300">
-                  What are you training for?
-                </label>
-                <textarea
-                  id="goals"
-                  name="goals"
-                  rows="3"
-                  class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
-                  placeholder="e.g., get stronger, lose fat, run faster, feel better, stop feeling stuck…"
-                ></textarea>
-              </div>
+    <!-- New required phone field -->
+    <div>
+      <label for="phone" class="block text-xs font-medium text-slate-300">
+        Phone number*
+      </label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        required
+        class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
+        placeholder="(555) 555-5555"
+      />
+    </div>
 
-              <div>
-                <label class="block text-xs font-medium text-slate-300">
-                  What pace sounds most like you right now?
-                </label>
-                <div class="mt-2 grid gap-2 text-xs text-slate-200 sm:grid-cols-3">
-                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 hover:border-fast-500">
-                    <input type="radio" name="pace" value="fast-leaning" class="h-3 w-3 border-slate-500 bg-slate-900 text-fast-500" />
-                    <span>Fast-leaning</span>
-                  </label>
-                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 hover:border-slow-500">
-                    <input type="radio" name="pace" value="slow-leaning" class="h-3 w-3 border-slate-500 bg-slate-900 text-slow-500" />
-                    <span>Slow-leaning</span>
-                  </label>
-                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 hover:border-slate-400 sm:col-span-1">
-                    <input type="radio" name="pace" value="not-sure" class="h-3 w-3 border-slate-500 bg-slate-900 text-slate-200" />
-                    <span>Not sure yet</span>
-                  </label>
-                </div>
-              </div>
+    <!-- Optional -->
+    <div>
+      <label for="goals" class="block text-xs font-medium text-slate-300">
+        What are you training for?
+      </label>
+      <textarea
+        id="goals"
+        name="goals"
+        rows="3"
+        class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-fast-500 focus:outline-none focus:ring-1 focus:ring-fast-500"
+        placeholder="e.g., get stronger, lose fat, run faster, feel better, stop feeling stuck…"
+      ></textarea>
+    </div>
 
-              <button
-                type="submit"
-                class="inline-flex w-full items-center justify-center rounded-full bg-fast-500 px-4 py-2.5 text-sm font-semibold text-slate-950 hover:bg-fast-600 transition-colors"
-              >
-                Submit &amp; start training fast and slow
-              </button>
- <p class="mt-2 text-xs leading-relaxed text-slate-300">
-                All ages welcome—from 20s to 60s and beyond. We’ll choose movements and intensities that feel safe,
-                doable, and exciting for you.
-              </p>
-              <p class="mt-3 text-xs leading-relaxed text-slate-400">
-                Prefer email? You can also reach out directly at
-                <a href="mailto:touchgrassfit@gmail.com" class="text-grass-200 underline-offset-2 hover:underline">
-                  touchgrassfit@gmail.com
-                </a>.
-              </p>
-              <!-- Status message -->
-              <p id="form-status" class="mt-2 text-[11px] text-slate-400"></p>
-            </form>
-          </div>
+    <!-- Optional -->
+    <div>
+      <label class="block text-xs font-medium text-slate-300">
+        What pace sounds most like you right now?
+      </label>
+      <div class="mt-2 grid gap-2 text-xs text-slate-200 sm:grid-cols-3">
+        <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 hover:border-fast-500">
+          <input type="radio" name="pace" value="fast-leaning" class="h-3 w-3 border-slate-500 bg-slate-900 text-fast-500" />
+          <span>Fast-leaning</span>
+        </label>
+        <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 hover:border-slow-500">
+          <input type="radio" name="pace" value="slow-leaning" class="h-3 w-3 border-slate-500 bg-slate-900 text-slow-500" />
+          <span>Slow-leaning</span>
+        </label>
+        <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 hover:border-slate-400 sm:col-span-1">
+          <input type="radio" name="pace" value="not-sure" class="h-3 w-3 border-slate-500 bg-slate-900 text-slate-200" />
+          <span>Not sure yet</span>
+        </label>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="inline-flex w-full items-center justify-center rounded-full bg-fast-500 px-4 py-2.5 text-sm font-semibold text-slate-950 hover:bg-fast-600 transition-colors"
+    >
+      Submit &amp; start training fast and slow
+    </button>
+
+    <p class="mt-2 text-xs leading-relaxed text-slate-300">
+      All ages welcome—from 20s to 60s and beyond. We’ll choose movements and intensities that feel safe,
+      doable, and exciting for you.
+    </p>
+    <p class="mt-3 text-xs leading-relaxed text-slate-400">
+      Prefer email? You can also reach out directly at
+      <a href="mailto:youremail@example.com" class="text-grass-200 underline-offset-2 hover:underline">
+        touchgrassfit@gmail.com
+      </a>.
+    </p>
+    <!-- Status message -->
+    <p id="form-status" class="mt-2 text-[11px] text-slate-400"></p>
+  </form>
+</div>
+
         </div>
       </section>
 
